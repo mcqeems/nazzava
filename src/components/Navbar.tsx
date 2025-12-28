@@ -45,11 +45,11 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex lg:justify-center justify-between lg:px-0 px-4 items-center font-poppins text-black lg:h-[14vh] h-[10vh] lg:gap-68 gap-0 fixed w-full bg-white z-30">
+    <div className="flex lg:justify-center justify-between lg:px-0 px-4 backdrop-blur-2xl items-center font-poppins text-black lg:gap-68 gap-0 fixed w-full z-30">
       <Link href="/">
-        <Image src={logo.src} width={200} height={80} alt='image' className='lg:w-[160px] w-[110px] h-auto'/>
+        <Image src={logo.src} width={200} height={80} alt='image' className='lg:w-[110px] w-[110px] '/>
       </Link>
-      <div className={`flex lg:flex-row flex-col bg-white lg:w-auto w-[200px] text-[16px] lg:h-auto h-[100vh] top-0 justify-center items-center gap-8 lg:text-[18px] font-[500] duration-700 lg:relative absolute ${isOpenNav ? 'right-0' : '-right-[300px]'}`}>
+      <div className={`flex lg:flex-row flex-col lg:w-auto w-[200px] text-[16px] lg:h-auto h-[100vh] top-0 justify-center items-center gap-8 lg:text-[18px] font-[500] duration-700 lg:relative absolute ${isOpenNav ? 'right-0' : '-right-[300px]'}`}>
         <Link
           href="/"
           className="relative link-gradient text-black font-medium lg:text-[18px] text-[16px]"
