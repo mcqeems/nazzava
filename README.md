@@ -1,6 +1,4 @@
-# 🌿 Greenly — Website Edukasi & Aksi Lingkungan
-
-![Greenly Screenshot](./project.png)
+# 🌿 Nazzava — Website Edukasi & Aksi Lingkungan
 
 ---
 
