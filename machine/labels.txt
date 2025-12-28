@@ -1,4 +1,0 @@
-cardboard
-glass
-paper
-plastic
