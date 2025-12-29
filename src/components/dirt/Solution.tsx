@@ -27,9 +27,9 @@ export default function Solution() {
           <div className=''>
             {DirtAccordion.map((item, i) => (
               <div key={i} className='mt-5' data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
-                <div className={`bg-gray-200 w-[330px] lg:w-[660px] rounded-2xl overflow-hidden transition-all duration-700 bg-gray1 block mx-auto ${activeIndex === i ? 'max-h-[500px]' : 'lg:max-h-[65px] max-h-[80px]'} ${activeIndex !== null ? 'shadow-lg' : ''}`}>
+                <div className={`bg-card w-[330px] lg:w-[660px] rounded-2xl overflow-hidden transition-all duration-700 bg-gray1 block mx-auto ${activeIndex === i ? 'max-h-[500px]' : 'lg:max-h-[65px] max-h-[80px]'} ${activeIndex !== null ? 'shadow-lg' : ''}`}>
                   <div 
-                    className='flex justify-between items-center p-4 cursor-pointer font-poppins transition-all duration-500 hover:bg-gray-300 hover:text-purple focus:text-purple' 
+                    className='flex justify-between items-center p-4 cursor-pointer font-poppins transition-all duration-500 hover:bg-primary-light hover:text-purple focus:text-purple' 
                     onClick={() => handleToggle(i)} 
                   >
                     <h1 className='text-lg font-semibold transition-all duration-500 lg:text-[18px] text-[16px] lg:w-full w-[250px]'>{item.title}</h1>
