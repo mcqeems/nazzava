@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import bot1 from '../../../public/logo/bot1.png'
-import bot2 from '../../../public/logo/bot2.png'
+import bot1 from '../../../public/logo/berpikir.webp'
+import bot2 from '../../../public/logo/diam.webp'
 
 export default function Page() {
   return (

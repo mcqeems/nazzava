@@ -1,11 +1,11 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import logo from '../../public/logo/logo-white.png'
-import twitter from '../../public/logo/twitter.png'
-import linkedin from '../../public/logo/linkedin.png'
-import facebook from '../../public/logo/facebook.png'
-import instagram from '../../public/logo/instagram.png'
+import logo from '../../public/logo/putih.webp'
+import twitter from '../../public/logo/twitter.webp'
+import linkedin from '../../public/logo/linkedin.webp'
+import facebook from '../../public/logo/facebook.webp'
+import instagram from '../../public/logo/instagram.webp'
 
 export default function Footer() {
   return (

@@ -6,12 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import glow from '../../../public/image/chatbot/glow.png';
-import ask from '../../../public/image/chatbot/ask.png';
+import glow from '../../../public/image/chatbot/glow.webp';
+import ask from '../../../public/image/chatbot/ask.webp';
 import send from '../../../public/image/chatbot/send.svg';
-import mic from '../../../public/image/chatbot/mic.png';
+import mic from '../../../public/image/chatbot/mic.webp';
 import load from '../../../public/image/chatbot/answer.svg';
-import logo from '../../../public/logo/chatbot-2.png';
+import logo from '../../../public/logo/chatbot-2.webp';
 import { ButtonBack } from '@/components/ui/button-back';
 
 interface Message {

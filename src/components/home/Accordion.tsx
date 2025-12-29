@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { HomeAccordion } from '@/app/data/Accordion'
 import Image from 'next/image';
-import accordion from '../../../public/image/home/accordion.png'
+import accordion from '../../../public/image/home/accordion.webp'
 
 export default function Accordion() {
     const [activeIndex, setActiveIndex] = useState(null);

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { WaterAccordion } from '@/app/data/Accordion'
 import Image from 'next/image';
-import solution from '../../../public/image/water/solution.png'
+import solution from '../../../public/image/water/solution.webp'
 
 export default function Solution() {
     const [activeIndex, setActiveIndex] = useState(null);

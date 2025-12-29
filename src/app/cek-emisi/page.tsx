@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import React, { useState } from 'react'
-import bis from '../../../public/image/emisi/bis.png';
-import car from '../../../public/image/emisi/car.png';
-import motorcycle from '../../../public/image/emisi/motorcycle.png';
-import eletric from '../../../public/image/emisi/eletric.png';
-import gasoline from '../../../public/image/emisi/gasoline.png';
-import solar from '../../../public/image/emisi/solar.png';
+import bis from '../../../public/image/emisi/bis.webp';
+import car from '../../../public/image/emisi/car.webp';
+import motorcycle from '../../../public/image/emisi/motorcycle.webp';
+import eletric from '../../../public/image/emisi/eletric.webp';
+import gasoline from '../../../public/image/emisi/gasoline.webp';
+import solar from '../../../public/image/emisi/solar.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import Swal from 'sweetalert2';

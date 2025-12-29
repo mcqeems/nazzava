@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import game from '../../../public/image/home/game.png'
+import game from '../../../public/image/home/game.webp'
 import Image from 'next/image'
 import Link from 'next/link'
 

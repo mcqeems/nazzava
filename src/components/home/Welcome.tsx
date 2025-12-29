@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import bgWelcome from '../../../public/image/home/bg-welcome.svg'
-import globe from '../../../public/image/home/globe.png'
-import suggest from '../../../public/image/home/suggest.png'
-import search from '../../../public/image/home/search.png'
+import globe from '../../../public/image/home/globe.webp'
+import suggest from '../../../public/image/home/suggest.webp'
+import search from '../../../public/image/home/search.webp'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -40,3 +40,4 @@ export default function Welcome() {
     </div>
   )
 }
+

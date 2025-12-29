@@ -7,10 +7,10 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Image from 'next/image'
-import tree from '../../../public/image/home/tree.png'
-import water from '../../../public/image/home/water.png'
-import air from '../../../public/image/home/air.png'
-import dirt from '../../../public/image/home/dirt.png'
+import tree from '../../../public/image/home/tree.webp'
+import water from '../../../public/image/home/water.webp'
+import air from '../../../public/image/home/air.webp'
+import dirt from '../../../public/image/home/dirt.webp'
 
 const CategoryData = [
   {

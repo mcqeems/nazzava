@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import solution1 from '../../../public/image/home/solution1.png'
-import solution2 from '../../../public/image/home/solution2.png'
-import solution3 from '../../../public/image/home/solution3.png'
+import solution1 from '../../../public/image/home/solution1.webp'
+import solution2 from '../../../public/image/home/solution2.webp'
+import solution3 from '../../../public/image/home/solution3.webp'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper/modules'
 import 'swiper/css'

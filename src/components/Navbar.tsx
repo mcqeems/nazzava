@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { dropdownList } from "@/app/data/Element";
 import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "@/app/context/themeContext";
 import { Sun, Moon, Menu as MenuIcon, X } from "lucide-react";
 

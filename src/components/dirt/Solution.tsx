@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { DirtAccordion } from '@/app/data/Accordion'
 import Image from 'next/image';
-import solution from '../../../public/image/dirt/solution.png'
+import solution from '../../../public/image/dirt/solution.webp'
 
 export default function Solution() {
     const [activeIndex, setActiveIndex] = useState(null);

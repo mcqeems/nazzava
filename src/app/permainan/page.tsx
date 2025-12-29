@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import smartBin from '../../../public/image/game/smart-bin.png'
-import monsterJunk from '../../../public/image/game/monster-junk.png'
+import smartBin from '../../../public/image/game/smart-bin.webp'
+import monsterJunk from '../../../public/image/game/monster-junk.webp'
 import { ButtonBack } from '@/components/ui/button-back'
 
 export default function Page() {

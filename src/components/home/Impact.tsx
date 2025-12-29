@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import go from '../../../public/image/home/go.png'
-import background from '../../../public/image/home/background.png'
+import go from '../../../public/image/home/go.webp'
+import background from '../../../public/image/home/background.webp'
 
 const ImpactData = [
     {

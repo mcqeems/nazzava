@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import cloud from '../../../public/image/scan/cloud.png'
+import cloud from '../../../public/image/scan/cloud.webp'
 
 export default function Page() {
   return (

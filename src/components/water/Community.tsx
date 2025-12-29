@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import community1 from '../../../public/image/water/community1.png'
-import community2 from '../../../public/image/water/community2.png'
-import community3 from '../../../public/image/water/community3.png'
+import community1 from '../../../public/image/water/community1.webp'
+import community2 from '../../../public/image/water/community2.webp'
+import community3 from '../../../public/image/water/community3.webp'
 
 const CommunityData = [
     {

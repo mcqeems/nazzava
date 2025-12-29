@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import chatbot from '../../../public/logo/chatbot-2.png'
+import chatbot from '../../../public/logo/diam.webp'
 import Link from 'next/link'
 
 export default function Chatbot() {
