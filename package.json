@@ -13,6 +13,7 @@
     "axios": "^1.13.2",
     "chart.js": "^4.5.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
     "next": "^16.1.1",
     "react": "^19.2.3",
     "react-card-flip": "^1.2.3",

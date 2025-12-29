@@ -1,20 +1,22 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import type { Metadata } from "next";
 import { Poppins, Pixelify_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ScanProvider } from "./context/scanContext";
+import { ThemeProvider } from "./context/themeContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"]
-})
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+});
 
 const pixelify = Pixelify_Sans({
   variable: "--font-pixelify",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"]
-})
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Greenly Website",
@@ -27,22 +29,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="overflow-x-hidden" lang="en" style={{ scrollBehavior: 'smooth' }}>
-      <head> 
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+    <html
+      className="overflow-x-hidden"
+      lang="en"
+      style={{ scrollBehavior: "smooth" }}
+    >
+      <head>
+        <link
+          href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet"
+        />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       </head>
       <body
         className={`${poppins.variable} ${pixelify.variable} overflow-x-hidden antialiased`}
       >
-        <ScanProvider>          
-          {children}
-        </ScanProvider>
+        <ThemeProvider>
+          <ScanProvider>{children}</ScanProvider>
+        </ThemeProvider>
+        <Script
+          src="https://unpkg.com/aos@next/dist/aos.js"
+          strategy="beforeInteractive"
+        />
+        <Script id="init-aos" strategy="afterInteractive">
+          {`AOS.init();`}
+        </Script>
       </body>
-      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-      <script>
-        AOS.init();
-      </script>
     </html>
   );
 }
