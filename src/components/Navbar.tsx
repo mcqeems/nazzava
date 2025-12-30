@@ -103,7 +103,11 @@ export default function Navbar() {
           >
             <Link
               href="/"
-              className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap"
+              className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap transition-all duration-200 ${
+                pathname === "/"
+                  ? "text-primary font-bold scale-105"
+                  : "text-foreground"
+              }`}
               style={{ ["--gradient" as any]: colorNav }}
               onClick={closeNav}
             >
@@ -116,7 +120,13 @@ export default function Navbar() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1"
+                className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1 transition-all duration-200 ${
+                  ["/cek-emisi", "/chatbot", "/permainan", "/scan"].includes(
+                    pathname
+                  )
+                    ? "text-primary font-bold scale-105"
+                    : "text-foreground"
+                }`}
                 style={{ ["--gradient" as any]: colorNav }}
               >
                 Fitur Fitur
@@ -144,7 +154,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/cek-emisi"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     Cek Emisi
                   </Link>
@@ -154,7 +168,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/chatbot"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     Chatbot
                   </Link>
@@ -164,7 +182,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/permainan"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     Permainan
                   </Link>
@@ -174,7 +196,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname.startsWith("/scan")
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     Scan
                   </Link>
@@ -187,7 +213,11 @@ export default function Navbar() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1"
+                className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1 transition-all duration-200 ${
+                  ["/air", "/tanah", "/udara", "/pohon"].includes(pathname)
+                    ? "text-primary font-bold scale-105"
+                    : "text-foreground"
+                }`}
                 style={{ ["--gradient" as any]: colorNav }}
               >
                 Elemen
@@ -215,9 +245,13 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/air"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
-                    💧 Air 
+                    💧 Air
                   </Link>
                   <Link
                     href="/tanah"
@@ -225,7 +259,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/tanah"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     🏔️ Tanah
                   </Link>
@@ -235,7 +273,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/udara"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     💨 Udara
                   </Link>
@@ -245,7 +287,11 @@ export default function Navbar() {
                       setOpenDropdown(null);
                       closeNav();
                     }}
-                    className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
+                    className={`block px-4 py-2.5 hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px] ${
+                      pathname === "/pohon"
+                        ? "bg-primary/10 text-primary font-semibold pl-5"
+                        : "text-foreground"
+                    }`}
                   >
                     🌳 Pohon
                   </Link>
@@ -254,7 +300,11 @@ export default function Navbar() {
             </div>
             <Link
               href="/tentang"
-              className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap"
+              className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap transition-all duration-200 ${
+                pathname === "/tentang"
+                  ? "text-primary font-bold scale-105"
+                  : "text-foreground"
+              }`}
               style={{ ["--gradient" as any]: colorNav }}
               onClick={closeNav}
             >
@@ -262,7 +312,11 @@ export default function Navbar() {
             </Link>
             <Link
               href="/informasi"
-              className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap"
+              className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap transition-all duration-200 ${
+                pathname === "/informasi"
+                  ? "text-primary font-bold scale-105"
+                  : "text-foreground"
+              }`}
               style={{ ["--gradient" as any]: colorNav }}
               onClick={closeNav}
             >
