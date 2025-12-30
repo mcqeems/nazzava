@@ -217,7 +217,7 @@ export default function Navbar() {
                     }}
                     className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary hover:pl-5 transition-all duration-200 text-[15px]"
                   >
-                    💧 Air dan daun
+                    💧 Air 
                   </Link>
                   <Link
                     href="/tanah"
@@ -253,7 +253,7 @@ export default function Navbar() {
               )}
             </div>
             <Link
-              href="/#tentangkami"
+              href="/tentang"
               className="relative link-gradient text-foreground font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap"
               style={{ ["--gradient" as any]: colorNav }}
               onClick={closeNav}
