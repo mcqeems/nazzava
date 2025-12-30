@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import glow from '../../../public/image/chatbot/glow.webp';
 import ask from '../../../public/image/chatbot/ask.webp';
 import send from '../../../public/image/chatbot/send.svg';
 import mic from '../../../public/image/chatbot/mic.webp';
@@ -151,7 +150,6 @@ export default function GreenlyBot() {
      
       <ButtonBack/>
       <div className="w-full flex-col flex fixed font-poppins justify-between h-screen pt-24" data-aos="fade-up" data-aos-duration="800">
-        <Image src={glow} alt="Glow" width={900} height={600} className="absolute -z-20 w-300 h-auto -bottom-60 left-1/2 -translate-x-1/2" />
 
         {showHeader && (
           <div className="flex flex-col justify-center lg:mt-0 mt-12 items-center gap-8 ">
