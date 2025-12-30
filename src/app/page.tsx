@@ -17,7 +17,7 @@ export default function page() {
     <div className='font-poppins'>
       <Navbar/>
       <Welcome/>
-      <Impact/>
+       
       <Accordion/>
       <Chatbot/>
       <Article/>
