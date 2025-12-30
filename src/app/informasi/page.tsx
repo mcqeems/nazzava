@@ -157,8 +157,8 @@ export const Informasi = () => {
     <div className="min-h-screen flex flex-col bg-background font-poppins">
       <Navbar />
 
-      <main className="flex-1 py-8 md:py-16 lg:pt-28 pt-24">
-        <div className="max-w-4xl mx-auto lg:px-6 px-4">
+      <main className="flex-1 py-8 md:py-16 lg:pt-36 pt-28">
+        <div className="max-w-7xl mx-auto lg:px-8 px-4">
           {/* Header */}
           <div
             className="text-center mb-12"
