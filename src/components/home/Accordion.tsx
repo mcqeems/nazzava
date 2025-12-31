@@ -13,11 +13,11 @@ export default function Accordion() {
     };
 
   return (
-    <div className='font-poppins min-h-screen flex flex-col items-center lg:pb-28 pb-20 lg:px-0 px-6'>
+    <div className='font-poppins flex flex-col items-center lg:pb-28 pb-20 lg:px-0 px-6'>
       <div className='flex lg:flex-row flex-col-reverse lg:items-start items-center justify-center lg:gap-20 gap-10' data-aos-duration="800">
         <div className='w-82.5 lg:w-165'>
           <div className="flex mb-8 flex-col gap-4" data-aos="fade-right" data-aos-duration="800">
-              <h1 className='text-[#036600] font-semibold lg:text-[26px] text-[24px]'>5 Dampak Baik Mengurangi Emisi Karbon Kamu untuk Dunia yang Lebih Baik</h1>
+              <h1 className='text-primary font-semibold lg:text-[26px] text-[24px]'>5 Dampak Baik Mengurangi Emisi Karbon Kamu untuk Dunia yang Lebih Baik</h1>
               <p className='lg:text-[14px] text-[12px] font-medium text-justify'>Mengurangi emisi karbon memberikan dampak positif bagi dunia, mulai dari udara yang lebih bersih dan sehat, iklim yang lebih stabil, hingga alam yang lebih terlindungi dari kerusakan. Selain itu, gaya hidup rendah karbon juga mendorong pola hidup yang lebih sehat, seperti konsumsi makanan nabati dan penggunaan transportasi ramah lingkungan.</p>
           </div>
           {HomeAccordion.map((item, i) => (
@@ -38,7 +38,7 @@ export default function Accordion() {
           ))}
         </div>
         <div data-aos="fade-up" data-aos-duration="900">
-          <Image src={accordion} width={500} height={500} alt='solution' className='lg:w-[420px] w-full h-auto rounded-2xl transition-transform duration-500 hover:scale-105'/>
+          <Image src={accordion} width={500} height={500} alt='solution' className='lg:w-105 w-full h-auto rounded-2xl transition-transform duration-500 hover:scale-105'/>
         </div>
       </div>
     </div>
