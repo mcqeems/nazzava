@@ -122,11 +122,11 @@ export default function Welcome() {
         </div>
       </div>
       <div
-        className="flex lg:flex-row flex-col justify-center items-center lg:pb-16 lg:gap-16 gap-6 lg:mt-20 -mt-6"
+        className="flex lg:flex-row flex-col justify-center items-center pb-4 lg:pb-16 lg:gap-16 gap-6 lg:mt-20 -mt-6"
         id="cek-emisi"
       >
         <Image
-          src={suggest}
+          src={suggest.src}
           className="lg:w-137.5 w-70"
           width={550}
           height={500}
