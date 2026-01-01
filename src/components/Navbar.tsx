@@ -320,7 +320,7 @@ export default function Navbar() {
               )}
             </div>
             <Link
-              href="/tentang"
+              href="/tentang-kami"
               className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap transition-all duration-200 ${
                 pathname === "/tentang"
                   ? "text-primary font-bold scale-105"
