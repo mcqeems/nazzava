@@ -18,8 +18,21 @@ export default function Navbar() {
   );
   const [thisNav, setThisNav] = useState("");
   const [colorNav, setColorNav] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
+
+  useEffect(() => {
+    // Detect if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const filteredNavbar = () => {
@@ -47,7 +60,12 @@ export default function Navbar() {
   const closeNav = () => setIsOpenNav(false);
   const handleOpenNav = () => setIsOpenNav((prev) => !prev);
 
+  const handleDropdownClick = (dropdown: string) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+  };
+
   const handleDropdownEnter = (dropdown: string) => {
+    if (isMobile) return; // Skip hover on mobile
     if (dropdownTimeout) {
       clearTimeout(dropdownTimeout);
       setDropdownTimeout(null);
@@ -56,6 +74,7 @@ export default function Navbar() {
   };
 
   const handleDropdownLeave = () => {
+    if (isMobile) return; // Skip hover on mobile
     const timeout = setTimeout(() => {
       setOpenDropdown(null);
     }, 300); // delay 300ms sebelum menutup
@@ -120,6 +139,7 @@ export default function Navbar() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                onClick={() => handleDropdownClick("fitur")}
                 className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1 transition-all duration-200 ${
                   ["/cek-emisi", "/chatbot", "/permainan", "/scan"].includes(
                     pathname
@@ -213,6 +233,7 @@ export default function Navbar() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                onClick={() => handleDropdownClick("elemen")}
                 className={`relative link-gradient font-medium lg:text-[16px] text-[16px] hover-text-primary whitespace-nowrap flex items-center gap-1 transition-all duration-200 ${
                   ["/air", "/tanah", "/udara", "/pohon"].includes(pathname)
                     ? "text-primary font-bold scale-105"
