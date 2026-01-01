@@ -28,7 +28,7 @@ export default function TentangPage() {
         </div>
 
         {/* Nazzava dalam Lingkungan Section */}
-        <div className="mb-20 lg:mb-24" data-aos="fade-up" data-aos-delay="100">
+        <div className="mb-10 lg:mb-10" data-aos="fade-up" data-aos-delay="100">
           <h2 className="text-3xl lg:text-4xl font-bold text-primary-hover dark:text-primary mb-8">
             Arti Nazzava
           </h2>
@@ -62,7 +62,7 @@ export default function TentangPage() {
           data-aos-delay="200"
         >
             <Image
-              src="/logo/nazzava.webp"
+              src="/logo/nazzava-logo.webp"
               alt="Nazzava Logo"
               width={300}
               height={300}

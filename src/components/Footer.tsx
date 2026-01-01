@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo/nazzava.webp";
+import logo from "../../public/logo/nazzava-logo.webp";
 import { Mail } from "lucide-react";
 
 export default function Footer() {
@@ -15,10 +15,10 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src={logo.src}
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 alt="Nazzava Logo"
-                className="w-12.5 h-auto"
+                className=""
               />
               <div>
                 <h3 className="font-bold text-xl text-foreground">Nazzava</h3>
