@@ -1,4 +1,3 @@
-'use client'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Community from '@/components/air/Community'
@@ -7,7 +6,10 @@ import Home from '@/components/air/Home'
 import Impact from '@/components/air/Impact'
 import Solution from '@/components/air/Solution'
 import Threat from '@/components/air/Threat'
-import React from 'react'
+export const metadata = {
+  title: 'Udara - Nazzava', 
+  description: 'Nazzava membantu kamu mengurangi jejak karbon dengan tips, artikel, dan alat interaktif untuk gaya hidup rendah emisi.',
+}
 
 export default function page() {
   return (

@@ -1,9 +1,11 @@
-"use client";
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
+export const metadata = {
+  title: 'Tentang Kami - Nazzava', 
+  description: 'Pelajari lebih lanjut tentang Nazzava, platform digital yang berfokus pada edukasi dan aksi lingkungan untuk gaya hidup berkelanjutan.',
+}
 
 export default function TentangPage() {
   return (

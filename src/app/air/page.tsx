@@ -1,4 +1,3 @@
-'use client'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Community from '@/components/water/Community'
@@ -7,8 +6,10 @@ import Home from '@/components/water/Home'
 import Impact from '@/components/water/Impact'
 import Solution from '@/components/water/Solution'
 import Threat from '@/components/water/Threat'
-import React from 'react'
-
+export const metadata = {
+  title: 'Air - Nazzava', 
+  description: 'Nazzava membantu kamu mengurangi jejak karbon dengan tips, artikel, dan alat interaktif untuk gaya hidup rendah emisi.',
+}
 export default function page() {
   return (
     <div className='font-poppins'>

@@ -1,9 +1,10 @@
-"'use client'"
-import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import cloud from '../../../public/image/scan/cloud.webp'
-
+export const metadata = {
+  title: 'Scan Sampah - Nazzava', 
+  description: 'Gunakan fitur Scan SampahMu untuk mengenali jenis sampah dan mendapatkan ide daur ulang yang bermanfaat.',
+}
 export default function Page() {
   return (
     <div className='flex flex-col text-white items-center justify-center h-screen font-poppins bg-[linear-gradient(150deg,#58C229_30%,#C7DF67_100%)]'>
