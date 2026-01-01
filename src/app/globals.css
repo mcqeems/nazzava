@@ -270,6 +270,21 @@ body {
   }
 }
 
+/* Hover Text */
+.hoverText {
+  display: inline-block;
+  transition: transform 0.3s ease-out, color 0.3s ease-out;
+}
+.text-hover-primary:hover {
+  color: var(--color-primary);
+}
+.text-hover-light:hover {
+  color: var(--color-foreground);
+}
+.hoverText:hover {
+  transform: translateY(-2px);
+}
+
 /* background color */
 /* Green */
 /* bg-[linear-gradient(150deg,_#58C229_30%,_#C7DF67_100%)] */

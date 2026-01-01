@@ -27,11 +27,11 @@ export default function Navbar() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024); // lg breakpoint
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
@@ -107,12 +107,31 @@ export default function Navbar() {
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-3">
         <div className="relative mt-4 flex items-center justify-between gap-4 rounded-full bg-card px-5 py-3 shadow-[0_0_20px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-colors duration-200 z-50">
-          <Link
-            href="/"
-            className="text-xl lg:text-2xl font-semibold text-primary tracking-tight"
-          >
-            Nazzava
-          </Link>
+          <div>
+            <Link href="/" className="flex items-center text-foreground">
+              <Image
+                src="/logo/nazzava-logo.webp"
+                width={24}
+                height={24}
+                alt="Nazzava"
+                className="block"
+              />
+              <div className="mt-1 ">
+                <span className="sm:flex text-xl font-[1000] leading-none tracking-tight">
+                  <span className="text-foreground dark:text-foreground">
+                    <span className="hoverText text-hover-primary">A</span>
+                    <span className="hoverText text-hover-primary">Z</span>
+                    <span className="hoverText text-hover-primary">Z</span>
+                  </span>
+                  <span className="text-primary dark:text-primary">
+                    <span className="hoverText text-hover-light">A</span>
+                    <span className="hoverText text-hover-light">V</span>
+                    <span className="hoverText text-hover-light">A</span>
+                  </span>
+                </span>
+              </div>
+            </Link>
+          </div>
           <div
             className={`flex lg:flex-row flex-col lg:w-auto  py-4 px-2 max-w-full text-[16px] lg:h-auto min-h-12 justify-center items-center gap-6 lg:text-[18px] font-medium duration-300 ease-out lg:static absolute right-3 left-3 top-20 lg:top-auto rounded-2xl lg:rounded-none bg-card lg:bg-transparent shadow-[0_0_15px_rgba(0,0,0,0.12)] lg:shadow-none ${
               isOpenNav
