@@ -3,6 +3,7 @@ import Image from "next/image";
 import smartBin from "../../../public/image/game/smart-bin.webp";
 import monsterJunk from "../../../public/image/game/monster-junk.webp";
 import { ButtonBack } from "@/components/ui/button-back";
+import { ArrowLeft } from "lucide-react";
 export const metadata = {
   title: 'Permainan - Nazzava', 
   description: 'Nikmati berbagai permainan edukatif yang seru dan interaktif di Nazzava.',
@@ -12,14 +13,26 @@ export default function Page() {
   return (
     <div className="" data-aos="fade-up" data-aos-duration="900">
       <div className="hidden lg:block">
-        <ButtonBack />
+        <a
+        href="/"
+          className="fixed top-10 left-6 z-40 flex items-center justify-center w-16 h-16 rounded-full bg-card shadow-[0_0_15px_rgba(0,0,0,0.15)] backdrop-blur-xl hover:bg-primary/10 hover:scale-110 transition-all duration-200"
+          aria-label="Go back"
+        >
+          <ArrowLeft className="w-8 h-8 text-foreground" />
+        </a>
       </div>
       <div className="flex flex-col justify-center items-center font-poppins min-h-screen pb-20 pt-10 container mx-auto">
         <div className="w-full bg-linear-to-br from-[#0F8A3B] via-[#8AD362] to-[#E5F4D2] rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)]">
           <div className="w-full h-full bg-[#0C1F11]/50 backdrop-blur-xl rounded-2xl overflow-hidden">
             <div className="relative w-full h-40 overflow-hidden lg:hidden">
               <div className="absolute top-4 left-4">
-                <ButtonBack />
+                <a
+                  href="/"
+                  className="fixed top-10 left-6 z-40 flex items-center justify-center w-16 h-16 rounded-full bg-card shadow-[0_0_15px_rgba(0,0,0,0.15)] backdrop-blur-xl hover:bg-primary/10 hover:scale-110 transition-all duration-200"
+                  aria-label="Go back"
+                >
+                  <ArrowLeft className="w-8 h-8 text-foreground" />
+                </a>
               </div>
             </div>
             <div className="relative w-full h-40 overflow-hidden hidden lg:block">
@@ -39,7 +52,7 @@ export default function Page() {
 
             <div className="flex flex-col gap-8 p-6 lg:p-10">
               <div className="space-y-4">
-                <Link href="/kenali-sampah">
+                <Link href="/permainan/kenali-sampah">
                   <button className="group relative w-full overflow-hidden rounded-2xl border border-[#E6F0DF] transition-all duration-300 hover:border-[#0F8A3B]">
                     <Image
                       src={smartBin.src}
@@ -73,7 +86,7 @@ export default function Page() {
               </div>
 
               <div className="space-y-4">
-                <Link href="/monster-junk">
+                <Link href="/permainan/monster-junk">
                   <button className="group relative w-full overflow-hidden rounded-2xl border border-[#E6F0DF] transition-all duration-300 hover:border-[#0F8A3B]">
                     <Image
                       src={monsterJunk.src}
