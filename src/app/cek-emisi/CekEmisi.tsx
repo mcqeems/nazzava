@@ -344,7 +344,7 @@ export default function CekEmisi() {
                   </div>
 
                   <div className="flex flex-col gap-4 items-stretch">
-                    <div className="relative">
+                    <div className="relative text-black">
                       <input
                         value={distance}
                         onChange={(e) => setDistance(e.target.value)}
