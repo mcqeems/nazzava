@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @theme default {
-  --font-poppins: "poppins";
-  --font-pixelify: "Pixelify Sans";
+  --font-poppins: 'poppins';
+  --font-pixelify: 'Pixelify Sans';
   --color-brown: #aea46b;
 }
 
@@ -193,7 +193,7 @@ body {
 }
 
 .link-gradient::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -302,3 +302,25 @@ body {
 /* text color */
 /* text-transparent bg-clip-text bg-[linear-gradient(150deg,_#58C229_30%,_#C7DF67_100%)] */
 /* text-transparent bg-clip-text bg-[radial-gradient(circle,_rgba(0,151,220,0.21)_0%,_rgba(110,199,240,1)_100%)] */
+
+#chatbot {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  /* 	filter: drop-shadow(0 6px 12px hsl(200 100% 50% / 0.6)); */
+  /* 	cursor: pointer; */
+  transform: scale(3);
+  /* 	box-shadow: inset 0 0 0 2px red; */
+}
+.robot-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% + var(--offset-x, 0px)), calc(-50% + var(--offset-y, 0px)));
+  transition: transform 0.1s ease-out;
+  will-change: transform; /* 提示瀏覽器優化，浏览器会提前分配大量资源，反而可能导致性能下降 */
+}
+#chatbot:hover #hair {
+  transform: translate(calc(-50% + var(--offset-x, 0px)), calc(-50% + var(--offset-y, 0px))) rotate(-270deg);
+  transition: 0.3s ease-out;
+}

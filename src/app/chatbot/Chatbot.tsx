@@ -3,17 +3,57 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { ButtonBack } from '@/components/ui/button-back';
+import { nazzaBotChat, type NazzaBotMessage } from './actions/actions';
+import MarkdownMessage from './components/MarkdownMessage';
 
 interface Message {
   role: 'user' | 'bot';
   content: string;
 }
 
-const genAI = new GoogleGenerativeAI('AIzaSyD64u_CJq5n5N_twIqjlsMH8bo6tx_jy34');
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+const STORAGE_KEY = 'nazzabot_history_v1';
+const MAX_MEMORY = 5;
+
+const TYPING_INTERVAL_MS = 16; // ~60fps
+const TYPING_CHARS_PER_TICK = 12; // faster typing
+
+function normalizeBotText(text: string) {
+  // If the model escapes <br>, unescape it so tables can keep line breaks.
+  let out = text.replaceAll(/\r\n|\r/g, '\n');
+  out = out.replaceAll(/&lt;br\s*\/?\s*&gt;/gi, '<br>');
+
+  // Prevent massive vertical gaps when the model outputs many <br> or blank lines.
+  out = out.replaceAll(/(<br\s*\/?\s*>\s*){3,}/gi, '<br><br>');
+  out = out.replaceAll(/\n{3,}/g, '\n\n');
+  return out;
+}
+
+function loadHistory(): Message[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    const cleaned: Message[] = parsed
+      .filter((m: any) => m && (m.role === 'user' || m.role === 'bot') && typeof m.content === 'string')
+      .map((m: any) => ({ role: m.role, content: String(m.content) }))
+      .filter((m: Message) => m.content.trim().length > 0);
+    return cleaned.slice(-MAX_MEMORY);
+  } catch {
+    return [];
+  }
+}
+
+function saveHistory(messages: Message[]) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages.slice(-MAX_MEMORY)));
+  } catch {
+    // ignore storage quota / disabled storage
+  }
+}
 
 export default function Chatbot() {
   const [prompt, setPrompt] = useState('');
@@ -21,10 +61,10 @@ export default function Chatbot() {
   const [loading, setLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [showHeader, setShowHeader] = useState(true);
-  const [showMic, setShowMic] = useState(false);
   const [typingContent, setTypingContent] = useState('');
   const recognitionRef = useRef<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<Message[]>([]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,6 +73,31 @@ export default function Chatbot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, loading, typingContent]);
+
+  useEffect(() => {
+    const history = loadHistory();
+    if (history.length > 0) {
+      setMessages(history);
+      setShowSuggestions(false);
+      setShowHeader(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    saveHistory(messages);
+    messagesRef.current = messages;
+  }, [messages]);
+
+  const getNazzaBotResponse = async (nextMessages: Message[]) => {
+    // Only send last 5 messages to the server
+    const sliced = nextMessages.slice(-MAX_MEMORY);
+    const payload: NazzaBotMessage[] = sliced.map((m) => ({
+      role: m.role === 'bot' ? 'assistant' : 'user',
+      content: m.content,
+    }));
+
+    return normalizeBotText((await nazzaBotChat(payload)).trim());
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -45,14 +110,15 @@ export default function Chatbot() {
         recognitionRef.current.maxAlternatives = 1;
 
         recognitionRef.current.onresult = async (event: any) => {
-          const transcript = event.results[0][0].transcript;
+          const transcript = String(event?.results?.[0]?.[0]?.transcript ?? '').trim();
           setPrompt('');
-          setShowMic(false);
           setLoading(true);
           setShowHeader(false);
-          setMessages((prev) => [...prev, { role: 'user', content: transcript }]);
+          const userMsg: Message = { role: 'user', content: transcript };
+          const nextMessages: Message[] = [...messagesRef.current, userMsg].slice(-MAX_MEMORY);
+          setMessages(nextMessages);
           try {
-            const response = await getCustomResponse(transcript);
+            const response = await getNazzaBotResponse(nextMessages);
             await typeText(response);
           } catch {
             setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
@@ -60,9 +126,7 @@ export default function Chatbot() {
           }
         };
 
-        recognitionRef.current.onerror = () => {
-          setShowMic(false);
-        };
+        recognitionRef.current.onerror = () => {};
       }
     }
   }, []);
@@ -71,41 +135,33 @@ export default function Chatbot() {
     setTypingContent('');
     let index = 0;
     setShowSuggestions(false);
+    setLoading(false);
     const interval = setInterval(() => {
       if (index < text.length) {
-        setTypingContent((prev) => prev + text.charAt(index));
-        index++;
-        setLoading(false);
+        const nextIndex = Math.min(index + TYPING_CHARS_PER_TICK, text.length);
+        const chunk = text.slice(index, nextIndex);
+        index = nextIndex;
+        setTypingContent((prev) => prev + chunk);
       } else {
         clearInterval(interval);
-        setMessages((prev) => [...prev, { role: 'bot', content: text }]);
+        setMessages((prev) => [...prev, { role: 'bot' as const, content: text }].slice(-MAX_MEMORY));
         setTypingContent('');
         setLoading(false);
       }
-    }, 10);
-  };
-
-  const getCustomResponse = async (input: string) => {
-    const lower = input.toLowerCase();
-    if (lower.includes('who are you'))
-      return "I'm **Greenly Bot**, your environmental awareness companion. Let's make the planet greener together!";
-    if (lower.includes('siapa kamu'))
-      return 'Saya **Greenly Bot**, teman peduli lingkungan Anda. Mari bersama-sama menjaga bumi kita!';
-    if (lower.includes('kamu siapa'))
-      return 'Saya **Greenly Bot**, asisten yang siap membantu Anda menjaga dan mencintai lingkungan.';
-    const result = await model.generateContent(input);
-    return result.response.text();
+    }, TYPING_INTERVAL_MS);
   };
 
   const handleSubmit = async () => {
     if (!prompt.trim()) return;
     setLoading(true);
     setShowHeader(false);
-    setMessages((prev) => [...prev, { role: 'user', content: prompt }]);
     const input = prompt;
     setPrompt('');
     try {
-      const response = await getCustomResponse(input);
+      const userMsg: Message = { role: 'user', content: input };
+      const nextMessages: Message[] = [...messages, userMsg].slice(-MAX_MEMORY);
+      setMessages(nextMessages);
+      const response = await getNazzaBotResponse(nextMessages);
       await typeText(response);
     } catch (error) {
       console.error(error);
@@ -119,9 +175,11 @@ export default function Chatbot() {
     setShowSuggestions(false);
     setShowHeader(false);
     setLoading(true);
-    setMessages((prev) => [...prev, { role: 'user', content: question }]);
     try {
-      const response = await getCustomResponse(question);
+      const userMsg: Message = { role: 'user', content: question };
+      const nextMessages: Message[] = [...messages, userMsg].slice(-MAX_MEMORY);
+      setMessages(nextMessages);
+      const response = await getNazzaBotResponse(nextMessages);
       await typeText(response);
     } catch {
       setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
@@ -134,7 +192,6 @@ export default function Chatbot() {
   };
 
   const handleShowMic = () => {
-    setShowMic(true);
     if (typeof window !== 'undefined') {
       const micAudio = new Audio('/audio/mic.mp3');
       micAudio.play();
@@ -177,8 +234,8 @@ export default function Chatbot() {
                     msg.role === 'user' ? 'bg-card text-foreground ml-auto' : 'bg-card text-foreground mr-auto'
                   }`}
                 >
-                  <div className="text-[10px] lg:text-[14px] text-justify">
-                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  <div className="text-[10px] lg:text-[14px] text-left wrap-break-word leading-relaxed">
+                    <MarkdownMessage content={msg.content} />
                   </div>
                 </div>
               </div>
@@ -194,8 +251,8 @@ export default function Chatbot() {
 
             {typingContent && (
               <div className="flex justify-start">
-                <div className="bg-card p-4 rounded-lg max-w-[95%] lg:max-w-[70%] shadow-md text-[10px] lg:text-[14px] text-justify text-foreground">
-                  <ReactMarkdown>{typingContent}</ReactMarkdown>
+                <div className="bg-card p-4 rounded-lg max-w-[95%] lg:max-w-[70%] shadow-md text-[10px] lg:text-[14px] text-left text-foreground wrap-break-word leading-relaxed">
+                  <MarkdownMessage content={typingContent} />
                 </div>
               </div>
             )}
