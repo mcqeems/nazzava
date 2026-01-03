@@ -1,6 +1,5 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import Community from '@/components/water/Community'
 import Fact from '@/components/water/Fact'
 import Home from '@/components/water/Home'
 import Impact from '@/components/water/Impact'
@@ -19,7 +18,6 @@ export default function page() {
       <Threat/>
       <Impact/>
       <Solution/>
-      <Community/>
       <Footer/>
     </div>
   )

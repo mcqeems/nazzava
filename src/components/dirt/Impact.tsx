@@ -1,18 +1,19 @@
 "use client";
-import React from "react";
 import Image from "next/image";
-import vector1 from "../../../public/image/dirt/impact/vector1.webp";
-import vector2 from "../../../public/image/dirt/impact/vector2.webp";
-import vector3 from "../../../public/image/dirt/impact/vector3.webp";
-import vector4 from "../../../public/image/dirt/impact/vector4.webp";
-import vector5 from "../../../public/image/dirt/impact/vector5.webp";
-import vector6 from "../../../public/image/dirt/impact/vector6.webp";
-import img1 from "../../../public/image/dirt/impact/img1.webp";
-import img2 from "../../../public/image/dirt/impact/img2.webp";
-import img3 from "../../../public/image/dirt/impact/img3.webp";
-import img4 from "../../../public/image/dirt/impact/img4.webp";
-import img5 from "../../../public/image/dirt/impact/img5.webp";
-import img6 from "../../../public/image/dirt/impact/img6.webp";
+
+// variabel image
+const vector1 = "/image/dirt/impact/vector1.webp";
+const vector2 = "/image/dirt/impact/vector2.webp";
+const vector3 = "/image/dirt/impact/vector3.webp";
+const vector4 = "/image/dirt/impact/vector4.webp";
+const vector5 = "/image/dirt/impact/vector5.webp";
+const vector6 = "/image/dirt/impact/vector6.webp";
+const img1 = "/image/dirt/impact/img1.webp";
+const img2 = "/image/dirt/impact/img2.webp";
+const img3 = "/image/dirt/impact/img3.webp";
+const img4 = "/image/dirt/impact/img4.webp";
+const img5 = "/image/dirt/impact/img5.webp";
+const img6 = "/image/dirt/impact/img6.webp";
 
 const ImpactDataMobile = [
   {
@@ -93,7 +94,7 @@ export default function Impact() {
           <div className="flex justify-center items-start">
             <div
               style={{
-                backgroundImage: `url(${vector1.src})`,
+                backgroundImage: `url(${vector1})`,
                 width: "650px",
                 minHeight: "210px",
               }}
@@ -124,7 +125,7 @@ export default function Impact() {
             </div>
             <div
               style={{
-                backgroundImage: `url(${vector2.src})`,
+                backgroundImage: `url(${vector2})`,
                 width: "650px",
                 minHeight: "280px",
               }}
@@ -156,7 +157,7 @@ export default function Impact() {
           <div className="flex justify-center gap-14 items-start -mt-10">
             <div
               style={{
-                backgroundImage: `url(${vector3.src})`,
+                backgroundImage: `url(${vector3})`,
                 width: "620px",
                 minHeight: "280px",
               }}
@@ -187,7 +188,7 @@ export default function Impact() {
             </div>
             <div
               style={{
-                backgroundImage: `url(${vector4.src})`,
+                backgroundImage: `url(${vector4})`,
                 width: "540px",
                 minHeight: "280px",
               }}
@@ -218,7 +219,7 @@ export default function Impact() {
           <div className="flex justify-center gap-2 items-start -mt-18">
             <div
               style={{
-                backgroundImage: `url(${vector5.src})`,
+                backgroundImage: `url(${vector5})`,
                 width: "560px",
                 minHeight: "280px",
               }}
@@ -249,7 +250,7 @@ export default function Impact() {
             </div>
             <div
               style={{
-                backgroundImage: `url(${vector6.src})`,
+                backgroundImage: `url(${vector6})`,
                 width: "670px",
                 minHeight: "200px",
               }}
