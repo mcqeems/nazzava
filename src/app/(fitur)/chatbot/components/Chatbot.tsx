@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ButtonBack } from '@/components/ui/button-back';
 import { nazzaBotChat, type NazzaBotMessage } from '../actions/actions';
 import MarkdownMessage from './MarkdownMessage';
-import { BotIcon, MicIcon, MicOffIcon, SendHorizonalIcon } from 'lucide-react';
+import { BotIcon, EllipsisVerticalIcon, MicIcon, MicOffIcon, SendHorizonalIcon } from 'lucide-react';
 import Dot from './Dot';
 import CuteBot from './CuteBot';
 
@@ -367,7 +367,10 @@ export default function Chatbot() {
                 </div>
               </div>
             )}
-            <div className="flex items-center w-full bg-card h-20 px-4 lg:px-6 rounded-xl shadow-lg">
+            <div className="flex items-center w-full bg-card h-20 px-2 gap-4 lg:px-4 rounded-xl shadow-lg">
+              <button>
+                <EllipsisVerticalIcon />
+              </button>
               <input
                 type="text"
                 placeholder="Tanyakan apa pun tentang kondisi lingkungan Kamu sekarang"
@@ -392,7 +395,7 @@ export default function Chatbot() {
                 }
                 aria-pressed={isListening}
                 disabled={!speechSupported}
-                className={`relative cursor-pointer lg:w-7.5 w-6.25 mr-4 transition-all text-foreground hover:text-muted-text disabled:opacity-50 disabled:cursor-not-allowed ${
+                className={`relative cursor-pointer lg:w-7.5 w-6.25 transition-all text-foreground hover:text-muted-text disabled:opacity-50 disabled:cursor-not-allowed ${
                   isListening ? 'text-primary hover:text-primary' : ''
                 }`}
                 onClick={handleShowMic}
