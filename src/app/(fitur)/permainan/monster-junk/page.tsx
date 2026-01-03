@@ -20,7 +20,6 @@ import playerMirror1 from "../../../../../public/logo/lari kiri.webp";
 import player2 from "../../../../../public/logo/diam.webp";
 import enemy from "../../../../../public/logo/enemy.webp";
 import enemyMirror from "../../../../../public/logo/enemy-mirror.webp";
-import Loading from "../../../ui/Loading";
 
 export default function Page() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -539,7 +538,7 @@ export default function Page() {
         <div className="flex justify-center items-center mt-4 lg:mt-12 gap-20">
           <button
             className="text-white border-2 border-white px-8 py-2 rounded-md text-[14px] lg:text-[20px] font-[500] cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
-            id="playAgain"
+            id="playAgain" 
           >
             Mulai Lagi
           </button>
@@ -552,7 +551,6 @@ export default function Page() {
         </div>
       </div>
 
-      <Loading className={`${isLoading ? "flex" : "opacity-0 duration-400"}`} />
       <p
         className="absolute lg:top-12 top-6 left-14 font-[700] text-[24px] lg:text-[40px] text-shadow-2xl text-[#FFAA00]"
         style={{ WebkitTextStroke: "1px black" }}

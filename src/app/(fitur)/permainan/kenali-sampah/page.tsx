@@ -23,7 +23,6 @@ import img9 from "../../../../../public/image/kenali/trash/9.webp";
 import img10 from "../../../../../public/image/kenali/trash/10.webp";
 import img11 from "../../../../../public/image/kenali/trash/11.webp";
 import img12 from "../../../../../public/image/kenali/trash/12.webp";
-import Loading from "../../../ui/Loading";
 import chevronRight from "../../../../../public/image/analog/right.svg";
 import chevronLeft from "../../../../../public/image/analog/left.svg";
 import chevronDown from "../../../../../public/image/analog/down.svg";
@@ -521,7 +520,6 @@ export default function Page() {
         </div>
       </div>
 
-      <Loading className={`${isLoading ? "flex" : "opacity-0 duration-400"}`} />
       <div
         className={`absolute analog-game flex justify-center items-center gap-6 bottom-6 left-6 ${
           isLoading == false ? "z-20" : "z-0"
