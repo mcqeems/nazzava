@@ -1,18 +1,20 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import vector1 from "../../../public/image/air/impact/vector1.webp";
-import vector2 from "../../../public/image/air/impact/vector2.webp";
-import vector3 from "../../../public/image/air/impact/vector3.webp";
-import vector4 from "../../../public/image/air/impact/vector4.webp";
-import vector5 from "../../../public/image/air/impact/vector5.webp";
-import vector6 from "../../../public/image/air/impact/vector6.webp";
-import img1 from "../../../public/image/air/impact/img1.webp";
-import img2 from "../../../public/image/air/impact/img2.webp";
-import img3 from "../../../public/image/air/impact/img3.webp";
-import img4 from "../../../public/image/air/impact/img4.webp";
-import img5 from "../../../public/image/air/impact/img5.webp";
-import img6 from "../../../public/image/air/impact/img6.webp";
+
+const vector1 = "/image/air/impact/vector1.webp";
+const vector2 = "/image/air/impact/vector2.webp";
+const vector3 = "/image/air/impact/vector3.webp";
+const vector4 = "/image/air/impact/vector4.webp";
+const vector5 = "/image/air/impact/vector5.webp";
+const vector6 = "/image/air/impact/vector6.webp";
+const img1 = "/image/air/impact/img1.webp";
+const img2 = "/image/air/impact/img2.webp";
+const img3 = "/image/air/impact/img3.webp";
+const img4 = "/image/air/impact/img4.webp";
+const img5 = "/image/air/impact/img5.webp";
+const img6 = "/image/air/impact/img6.webp";
+
 
 const ImpactDataMobile = [
   {
@@ -92,7 +94,7 @@ export default function Impact() {
         <div className="flex flex-col gap-4 display-none -mt-2 items-start lg:px-0 lg:w-auto w-80 lg:overflow-x-visible overflow-x-auto">
           <div className="flex justify-center items-start">
             <div
-              style={{ backgroundImage: `url(${vector1.src})` }}
+              style={{ backgroundImage: `url(${vector1})` }}
               className="flex relative -mr-10 justify-start items-center gap-4 object-cover w-162.5 bg-center bg-cover min-h-52.5"
               data-aos="fade-right"
               data-aos-duration="800"
@@ -117,7 +119,7 @@ export default function Impact() {
               />
             </div>
             <div
-              style={{ backgroundImage: `url(${vector2.src})` }}
+              style={{ backgroundImage: `url(${vector2})` }}
               className="flex relative -ml-10 justify-start items-center gap-4 object-cover w-162.5 bg-center bg-cover min-h-70"
               data-aos="fade-left"
               data-aos-duration="800"
@@ -144,7 +146,7 @@ export default function Impact() {
           </div>
           <div className="flex justify-center gap-14 items-start -mt-10">
             <div
-              style={{ backgroundImage: `url(${vector3.src})` }}
+              style={{ backgroundImage: `url(${vector3})` }}
               className="flex relative mr-0 -mt-22 justify-end items-center gap-4 object-cover w-155 bg-center bg-cover min-h-70"
               data-aos="fade-right"
               data-aos-duration="800"
@@ -168,7 +170,7 @@ export default function Impact() {
               </div>
             </div>
             <div
-              style={{ backgroundImage: `url(${vector4.src})` }}
+              style={{ backgroundImage: `url(${vector4})` }}
               className="flex relative ml-0 justify-end items-center gap-4 object-cover w-135 bg-center bg-cover min-h-70"
               data-aos="fade-left"
               data-aos-duration="800"
@@ -194,7 +196,7 @@ export default function Impact() {
           </div>
           <div className="flex justify-center gap-2 items-start -mt-18">
             <div
-              style={{ backgroundImage: `url(${vector5.src})` }}
+              style={{ backgroundImage: `url(${vector5})` }}
               className="flex relative mr-0 justify-start -mt-20 items-center gap-4 object-cover w-140 bg-center bg-cover min-h-70"
               data-aos="fade-right"
               data-aos-duration="800"
@@ -219,7 +221,7 @@ export default function Impact() {
               />
             </div>
             <div
-              style={{ backgroundImage: `url(${vector6.src})` }}
+              style={{ backgroundImage: `url(${vector6})` }}
               className="flex relative -ml-6 justify-end items-center gap-4 object-cover w-167.5 bg-center bg-cover min-h-50"
               data-aos="fade-left"
               data-aos-duration="800"

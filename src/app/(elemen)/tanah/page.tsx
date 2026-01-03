@@ -1,6 +1,5 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import Community from '@/components/dirt/Community'
 import Fact from '@/components/dirt/Fact'
 import Home from '@/components/dirt/Home'
 import Impact from '@/components/dirt/Impact'
@@ -19,7 +18,6 @@ export default function page() {
       <Threat/>
       <Impact/>
       <Solution/>
-      <Community/>
       <Footer/>
     </div>
   )
