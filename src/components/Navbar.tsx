@@ -116,7 +116,7 @@ export default function Navbar() {
                 alt="Nazzava"
                 className="block"
               />
-              <div className="mt-1 ">
+              <div className="mt-1 lg:mb-0.5">
                 <span className="sm:flex text-xl font-[1000] leading-none tracking-tight">
                   <span className="text-foreground dark:text-foreground">
                     <span className="hoverText text-hover-primary">A</span>
