@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ButtonBack } from '@/components/ui/button-back';
 import { nazzaBotChat, type NazzaBotMessage } from '../actions/actions';
 import MarkdownMessage from './MarkdownMessage';
-import { BotIcon } from 'lucide-react';
+import { BotIcon, MicIcon, MicOffIcon, SendHorizonalIcon } from 'lucide-react';
 import Dot from './Dot';
 
 interface Message {
@@ -64,9 +64,14 @@ export default function Chatbot() {
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [showHeader, setShowHeader] = useState(true);
   const [typingContent, setTypingContent] = useState('');
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<Message[]>([]);
+  const voiceAutoSubmitTimeoutRef = useRef<number | null>(null);
+  const voicePendingTranscriptRef = useRef<string | null>(null);
+  const voiceUserInteractedRef = useRef(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -90,7 +95,7 @@ export default function Chatbot() {
     messagesRef.current = messages;
   }, [messages]);
 
-  const getNazzaBotResponse = async (nextMessages: Message[]) => {
+  const getNazzaBotResponse = useCallback(async (nextMessages: Message[]) => {
     // Only send last 5 messages to the server
     const sliced = nextMessages.slice(-MAX_MEMORY);
     const payload: NazzaBotMessage[] = sliced.map((m) => ({
@@ -99,41 +104,28 @@ export default function Chatbot() {
     }));
 
     return normalizeBotText((await nazzaBotChat(payload)).trim());
-  };
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
-      if (SpeechRecognition) {
-        recognitionRef.current = new SpeechRecognition();
-        recognitionRef.current.continuous = false;
-        recognitionRef.current.lang = 'id-ID';
-        recognitionRef.current.interimResults = false;
-        recognitionRef.current.maxAlternatives = 1;
-
-        recognitionRef.current.onresult = async (event: any) => {
-          const transcript = String(event?.results?.[0]?.[0]?.transcript ?? '').trim();
-          setPrompt('');
-          setLoading(true);
-          setShowHeader(false);
-          const userMsg: Message = { role: 'user', content: transcript };
-          const nextMessages: Message[] = [...messagesRef.current, userMsg].slice(-MAX_MEMORY);
-          setMessages(nextMessages);
-          try {
-            const response = await getNazzaBotResponse(nextMessages);
-            await typeText(response);
-          } catch {
-            setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
-            setLoading(false);
-          }
-        };
-
-        recognitionRef.current.onerror = () => {};
-      }
-    }
   }, []);
 
-  const typeText = async (text: string) => {
+  const clearVoiceAutoSubmit = useCallback(() => {
+    if (voiceAutoSubmitTimeoutRef.current !== null) {
+      window.clearTimeout(voiceAutoSubmitTimeoutRef.current);
+      voiceAutoSubmitTimeoutRef.current = null;
+    }
+    voicePendingTranscriptRef.current = null;
+    voiceUserInteractedRef.current = false;
+  }, []);
+
+  const markVoiceInputInteracted = useCallback(() => {
+    if (voiceAutoSubmitTimeoutRef.current === null) return;
+    voiceUserInteractedRef.current = true;
+    if (voiceAutoSubmitTimeoutRef.current !== null) {
+      window.clearTimeout(voiceAutoSubmitTimeoutRef.current);
+      voiceAutoSubmitTimeoutRef.current = null;
+    }
+    voicePendingTranscriptRef.current = null;
+  }, []);
+
+  const typeText = useCallback(async (text: string) => {
     setTypingContent('');
     let index = 0;
     setShowSuggestions(false);
@@ -151,42 +143,107 @@ export default function Chatbot() {
         setLoading(false);
       }
     }, TYPING_INTERVAL_MS);
-  };
+  }, []);
+
+  const submitText = useCallback(
+    async (text: string) => {
+      const input = text.trim();
+      if (!input) return;
+
+      clearVoiceAutoSubmit();
+      setLoading(true);
+      setShowHeader(false);
+      setShowSuggestions(false);
+      setPrompt('');
+
+      try {
+        const userMsg: Message = { role: 'user', content: input };
+        const nextMessages: Message[] = [...messagesRef.current, userMsg].slice(-MAX_MEMORY);
+        setMessages(nextMessages);
+        const response = await getNazzaBotResponse(nextMessages);
+        await typeText(response);
+      } catch (error) {
+        console.error(error);
+        setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
+        setLoading(false);
+      }
+    },
+    [clearVoiceAutoSubmit, getNazzaBotResponse, typeText]
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+    if (!SpeechRecognition) {
+      setSpeechSupported(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'id-ID';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      setIsListening(true);
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.onerror = () => {
+      setIsListening(false);
+    };
+
+    recognition.onresult = (event: any) => {
+      const transcript = String(event?.results?.[0]?.[0]?.transcript ?? '').trim();
+      if (!transcript) return;
+
+      // Show transcript in the input first.
+      setPrompt(transcript);
+      setShowSuggestions(false);
+      setShowHeader(false);
+
+      // Auto-submit after 1.5s if the user doesn't interact (focus/change).
+      if (voiceAutoSubmitTimeoutRef.current !== null) {
+        window.clearTimeout(voiceAutoSubmitTimeoutRef.current);
+      }
+      voicePendingTranscriptRef.current = transcript;
+      voiceUserInteractedRef.current = false;
+      voiceAutoSubmitTimeoutRef.current = window.setTimeout(() => {
+        const pending = voicePendingTranscriptRef.current;
+        if (!pending) return;
+        if (voiceUserInteractedRef.current) return;
+        if (pending !== transcript) return;
+        submitText(transcript);
+      }, 1500);
+    };
+
+    recognitionRef.current = recognition;
+
+    return () => {
+      try {
+        recognition.abort();
+      } catch {
+        // ignore
+      }
+
+      if (voiceAutoSubmitTimeoutRef.current !== null) {
+        window.clearTimeout(voiceAutoSubmitTimeoutRef.current);
+        voiceAutoSubmitTimeoutRef.current = null;
+      }
+    };
+  }, [submitText]);
 
   const handleSubmit = async () => {
-    if (!prompt.trim()) return;
-    setLoading(true);
-    setShowHeader(false);
-    const input = prompt;
-    setPrompt('');
-    try {
-      const userMsg: Message = { role: 'user', content: input };
-      const nextMessages: Message[] = [...messages, userMsg].slice(-MAX_MEMORY);
-      setMessages(nextMessages);
-      const response = await getNazzaBotResponse(nextMessages);
-      await typeText(response);
-    } catch (error) {
-      console.error(error);
-      setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
-      setLoading(false);
-    }
+    await submitText(prompt);
   };
 
   const handleAsk = async (question: string) => {
-    setPrompt('');
-    setShowSuggestions(false);
-    setShowHeader(false);
-    setLoading(true);
-    try {
-      const userMsg: Message = { role: 'user', content: question };
-      const nextMessages: Message[] = [...messages, userMsg].slice(-MAX_MEMORY);
-      setMessages(nextMessages);
-      const response = await getNazzaBotResponse(nextMessages);
-      await typeText(response);
-    } catch {
-      setMessages((prev) => [...prev, { role: 'bot', content: 'Terjadi kesalahan. Silakan coba lagi.' }]);
-      setLoading(false);
-    }
+    await submitText(question);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -194,11 +251,23 @@ export default function Chatbot() {
   };
 
   const handleShowMic = () => {
-    if (typeof window !== 'undefined') {
-      const micAudio = new Audio('/audio/mic.mp3');
-      micAudio.play();
+    if (!speechSupported) return;
+
+    // Toggle listening
+    if (isListening) {
+      try {
+        recognitionRef.current?.stop?.();
+      } catch {
+        // ignore
+      }
+      return;
     }
-    recognitionRef.current?.start();
+
+    try {
+      recognitionRef.current?.start?.();
+    } catch {
+      // Some browsers throw if start() is called too fast.
+    }
   };
 
   return (
@@ -216,7 +285,7 @@ export default function Chatbot() {
           </div>
         )}
 
-        <div className="flex flex-col mx-auto w-[320px] lg:w-225 justify-between h-[calc(100vh-100px)] pb-14">
+        <div className="flex flex-col mx-auto w-[320px] lg:w-225 justify-between h-[calc(100vh-75px)] pb-14">
           <div
             className={`flex flex-col overflow-y-auto lg:px-6 py-4 space-y-4 ${
               messages.length > 0 ? 'h-full' : 'lg:h-[26vh] h-[16vh]'
@@ -233,7 +302,11 @@ export default function Chatbot() {
                     {msg.role === 'user' ? (
                       ''
                     ) : (
-                      <div className="bg-primary-light p-3 flex flex-row items-center justify-center gap-2 rounded-lg fade-in-down">
+                      <div
+                        className={`bg-primary-light p-3 flex flex-row items-center justify-center gap-2 rounded-lg ${
+                          index === messages.length - 1 ? 'fade-in-down' : ''
+                        }`}
+                      >
                         <BotIcon className="md:h-6 h-4 w-auto" />
                         NazzaBot
                       </div>
@@ -296,29 +369,45 @@ export default function Chatbot() {
               type="text"
               placeholder="Tanyakan apa pun tentang kondisi lingkungan Kamu sekarang"
               value={prompt}
+              onFocus={markVoiceInputInteracted}
               onChange={(e) => {
+                markVoiceInputInteracted();
                 setPrompt(e.target.value);
                 if (e.target.value.trim()) setShowSuggestions(false);
               }}
               onKeyDown={handleKeyDown}
               className="w-full outline-none text-[12px] lg:text-[14px] pr-4"
             />
-            <Image
-              src="/image/chatbot/mic.webp"
-              alt="Mic"
-              width={25}
-              height={25}
+            <button
+              type="button"
+              aria-label={
+                speechSupported ? (isListening ? 'Stop voice input' : 'Start voice input') : 'Voice input not supported'
+              }
+              aria-pressed={isListening}
+              disabled={!speechSupported}
+              className={`relative cursor-pointer lg:w-7.5 w-6.25 mr-4 transition-all text-foreground hover:text-muted-text disabled:opacity-50 disabled:cursor-not-allowed ${
+                isListening ? 'text-primary hover:text-primary' : ''
+              }`}
               onClick={handleShowMic}
-              className="cursor-pointer lg:w-7.5 w-6.25 mr-4"
-            />
-            <Image
-              src="/image/chatbot/send.svg"
-              alt="Send"
-              width={25}
-              height={25}
+            >
+              {isListening && (
+                <>
+                  <span className="pointer-events-none absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                  <span className="pointer-events-none absolute -inset-1.5 rounded-full border border-primary/30 animate-[audioWave_1.2s_ease-out_infinite]" />
+                </>
+              )}
+              <span className="relative inline-flex items-center justify-center">
+                {isListening ? <MicOffIcon width={25} height={25} /> : <MicIcon width={25} height={25} />}
+              </span>
+            </button>
+            <button
+              className="cursor-pointer lg:w-7.5 w-6.25  transition-all text-foreground hover:text-muted-text"
               onClick={handleSubmit}
-              className="cursor-pointer lg:w-6.25 w-5"
-            />
+            >
+              <span className="relative inline-flex items-center justify-center">
+                <SendHorizonalIcon width={25} height={25} />
+              </span>
+            </button>
           </div>
         </div>
       </div>
