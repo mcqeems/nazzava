@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Poppins, Pixelify_Sans } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
+import 'aos/dist/aos.css';
 import { ScanProvider } from './context/scanContext';
 import { ThemeProvider } from './context/themeContext';
 import InitialLoadGate from '@/components/ui/InitialLoadGate';
+import AOSInit from '@/components/AOSInit';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -33,7 +34,6 @@ export default function RootLayout({
     <html className="overflow-x-hidden" lang="en" style={{ scrollBehavior: 'smooth' }}>
       <head>
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       </head>
       <body className={`${poppins.variable} ${pixelify.variable} overflow-x-hidden antialiased`}>
         <ThemeProvider>
@@ -41,17 +41,7 @@ export default function RootLayout({
             <InitialLoadGate>{children}</InitialLoadGate>
           </ScanProvider>
         </ThemeProvider>
-        <Script src="https://unpkg.com/aos@next/dist/aos.js" strategy="lazyOnload" />
-        <Script id="init-aos" strategy="lazyOnload">
-          {`
-            window.addEventListener('load', () => {
-              // AOS mutates DOM classes; delaying avoids React hydration mismatch warnings.
-              if (window.AOS && typeof window.AOS.init === 'function') {
-                window.AOS.init();
-              }
-            });
-          `}
-        </Script>
+        <AOSInit />
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import bgWelcome from "../../../public/image/home/bg-welcome.svg";
-import globe from "../../../public/image/home/globe.webp";
-import suggest from "../../../public/image/home/suggest.webp";
-import search from "../../../public/image/home/search.webp";
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import bgWelcome from '../../../public/image/home/bg-welcome.svg';
+import globe from '../../../public/image/home/globe.webp';
+import suggest from '../../../public/image/home/suggest.webp';
+import search from '../../../public/image/home/search.webp';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Welcome() {
   return (
@@ -22,18 +22,15 @@ export default function Welcome() {
           {/* Content */}
           <div className="flex-1 z-10 space-y-6">
             <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
-              <span className="text-sm font-semibold text-primary">
-                🌍 Untuk Bumi yang Lebih Baik
-              </span>
+              <span className="text-sm font-semibold text-primary">🌍 Untuk Bumi yang Lebih Baik</span>
             </div>
             <h1 className="font-extrabold text-[56px] leading-[1.1] text-foreground">
               Jelajahi Gaya Hidup
               <span className="block text-primary mt-2">Rendah Emisi</span>
             </h1>
             <p className="text-[18px] text-muted-text leading-relaxed max-w-xl">
-              Temukan cara hidup yang lebih ramah lingkungan dengan mengurangi
-              jejak karbon harianmu. Setiap langkah kecil membawa perubahan
-              besar.
+              Temukan cara hidup yang lebih ramah lingkungan dengan mengurangi jejak karbon harianmu. Setiap langkah
+              kecil membawa perubahan besar.
             </p>
             <a
               href="#cek-emisi"
@@ -46,12 +43,7 @@ export default function Welcome() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
           </div>
@@ -99,9 +91,8 @@ export default function Welcome() {
 
             {/* Description */}
             <p className="text-[15px] text-muted-text leading-relaxed mb-8">
-              Temukan cara hidup yang lebih ramah lingkungan dengan mengurangi
-              jejak karbon harianmu. Mulai dari transportasi hingga energi,
-              setiap langkah kecil berarti untuk bumi kita.
+              Temukan cara hidup yang lebih ramah lingkungan dengan mengurangi jejak karbon harianmu. Mulai dari
+              transportasi hingga energi, setiap langkah kecil berarti untuk bumi kita.
             </p>
 
             {/* CTA Button */}
@@ -127,7 +118,7 @@ export default function Welcome() {
       >
         <Image
           src={suggest.src}
-          className="lg:w-137.5 w-70"
+          className="lg:w-137.5 w-70 h-auto"
           width={550}
           height={500}
           alt="suggest"
@@ -141,17 +132,13 @@ export default function Welcome() {
           data-aos-duration="800"
           data-aos-delay="100"
         >
-          <h1 className="lg:text-[32px] text-[24px] font-semibold text-primary">
-            Ayo Cek Emisi Karbon Kamu Sekarang!
-          </h1>
+          <h1 className="lg:text-[32px] text-[24px] font-semibold text-primary">Ayo Cek Emisi Karbon Kamu Sekarang!</h1>
           <p className="lg:text-[14px] text-[12px] font-normal mt-4 text-justify">
-            Langkah awal mengurangi karbon dimulai dari menghitung emisi karbon
-            pribadi kita berapa banyak tiap tahunnya. Caranya mudah, tinggal
-            masukin data aktivitas harian mulai dari pilihan transportasi,
-            penggunaan listrik dan peralatan elektronik, serta pilihan menu
-            makan. <br /> <br /> Hasil hitunganya bisa dilihat langsung. Kamu
-            juga bisa bandingin emisi kamu dengan rata-rata orang Indonesia,
-            ASEAN, Global, atau bahkan dengan teman kamu yang juga mencoba
+            Langkah awal mengurangi karbon dimulai dari menghitung emisi karbon pribadi kita berapa banyak tiap
+            tahunnya. Caranya mudah, tinggal masukin data aktivitas harian mulai dari pilihan transportasi, penggunaan
+            listrik dan peralatan elektronik, serta pilihan menu makan. <br /> <br /> Hasil hitunganya bisa dilihat
+            langsung. Kamu juga bisa bandingin emisi kamu dengan rata-rata orang Indonesia, ASEAN, Global, atau bahkan
+            dengan teman kamu yang juga mencoba
           </p>
           <Link href="/cek-emisi">
             <button className="font-semibold border-2 text-primary border-[#437655] rounded-lg mt-6 px-4 py-3 text-[16px] w-full lg:w-auto hover:scale-105 hover:bg-[#437655] hover:text-white duration-300 cursor-pointer">

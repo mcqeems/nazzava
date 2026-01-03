@@ -4,8 +4,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ButtonBack } from '@/components/ui/button-back';
-import { nazzaBotChat, type NazzaBotMessage } from './actions/actions';
-import MarkdownMessage from './components/MarkdownMessage';
+import { nazzaBotChat, type NazzaBotMessage } from '../actions/actions';
+import MarkdownMessage from './MarkdownMessage';
 
 interface Message {
   role: 'user' | 'bot';

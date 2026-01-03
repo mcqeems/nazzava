@@ -1,12 +1,13 @@
-import Chatbot from "./Chatbot";
+import Chatbot from './components/Chatbot';
 export const metadata = {
-  title: 'Chatbot - Nazzava', 
-  description: 'Berinteraksi dengan chatbot AI Nazzava untuk mendapatkan tips, informasi, dan saran tentang pengurangan jejak karbon dan gaya hidup ramah lingkungan.',
-}
+  title: 'Chatbot - Nazzava',
+  description:
+    'Berinteraksi dengan chatbot AI Nazzava untuk mendapatkan tips, informasi, dan saran tentang pengurangan jejak karbon dan gaya hidup ramah lingkungan.',
+};
 export default function page() {
-  return(
+  return (
     <div>
-      <Chatbot/>
+      <Chatbot />
     </div>
-  )
+  );
 }

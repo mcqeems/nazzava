@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "aos": "^2.3.4",
     "axios": "^1.13.2",
     "chart.js": "^4.5.1",
     "clsx": "^2.1.1",
