@@ -23,7 +23,7 @@ export default function Fact() {
           <div data-aos="fade-up" data-aos-duration="800">
             <div
               className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
-              style={{ backgroundImage: `url('/image/tree/comment.png')` }}
+              style={{ backgroundImage: `url('/image/tree/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[18px] text-[12px]">
@@ -38,7 +38,7 @@ export default function Fact() {
                 width={200}
                 height={200}
                 className="absolute lg:w-50 w-25 -bottom-2 lg:-right-15 -right-10"
-                src="/image/tree/fact1.png"
+                src="/image/tree/fact1.webp"
                 alt="fact"
               />
             </div>
@@ -46,7 +46,7 @@ export default function Fact() {
           <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div
               className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
-              style={{ backgroundImage: `url('/image/tree/comment.png')` }}
+              style={{ backgroundImage: `url('/image/tree/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[20px] text-[12px]">
@@ -60,7 +60,7 @@ export default function Fact() {
                 width={220}
                 height={220}
                 className="absolute lg:w-65 w-35 lg:-bottom-11.5 -bottom-6 lg:-right-15 -right-10"
-                src="/image/tree/fact3.png"
+                src="/image/tree/fact3.webp"
                 alt="fact"
               />
             </div>
@@ -75,14 +75,14 @@ export default function Fact() {
           <div
             className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 lg:mt-0 -mt-76 flex justify-center items-center gap-6"
             style={{
-              backgroundImage: `url('/image/tree/comment-reverse.png')`,
+              backgroundImage: `url('/image/tree/comment-reverse.webp')`,
             }}
           >
             <Image
               width={200}
               height={200}
               className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10px"
-              src="/image/tree/fact2.png"
+              src="/image/tree/fact2.webp"
               alt="fact"
             />
             <div className="lg:w-70 w-55 ml-12">
