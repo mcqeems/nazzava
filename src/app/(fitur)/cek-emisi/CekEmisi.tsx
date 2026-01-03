@@ -1,11 +1,11 @@
 "use client";
 import { useMemo, useState } from "react";
-import bis from "../../../public/image/emisi/bis.webp";
-import car from "../../../public/image/emisi/car.webp";
-import motorcycle from "../../../public/image/emisi/motorcycle.webp";
-import eletric from "../../../public/image/emisi/eletric.webp";
-import gasoline from "../../../public/image/emisi/gasoline.webp";
-import solar from "../../../public/image/emisi/solar.webp";
+import bis from "../../../../public/image/emisi/bis.webp";
+import car from "../../../../public/image/emisi/car.webp";
+import motorcycle from "../../../../public/image/emisi/motorcycle.webp";
+import eletric from "../../../../public/image/emisi/eletric.webp";
+import gasoline from "../../../../public/image/emisi/gasoline.webp";
+import solar from "../../../../public/image/emisi/solar.webp";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import { ButtonBack } from "@/components/ui/button-back";
