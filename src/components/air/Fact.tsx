@@ -23,7 +23,7 @@ export default function Fact() {
           <div data-aos="fade-up" data-aos-duration="800">
             <div
               className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
-              style={{ backgroundImage: `url('/image/air/comment.png')` }}
+              style={{ backgroundImage: `url('/image/air/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[18px] text-[12px]">
@@ -45,7 +45,7 @@ export default function Fact() {
           <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div
               className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
-              style={{ backgroundImage: `url('/image/air/comment.png')` }}
+              style={{ backgroundImage: `url('/image/air/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[20px] text-[12px]">
@@ -73,7 +73,7 @@ export default function Fact() {
         >
           <div
             className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 lg:mt-0 -mt-76 flex justify-center items-center gap-6"
-            style={{ backgroundImage: `url('/image/air/comment-reverse.png')` }}
+            style={{ backgroundImage: `url('/image/air/comment-reverse.webp')` }}
           >
             <Image
               width={200}

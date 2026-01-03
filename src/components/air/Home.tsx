@@ -9,7 +9,7 @@ export default function Home() {
         <p className='lg:text-[16px] text-[14px] text-justify'>Nggak perlu jadi ahli lingkungan buat jaga kualitas udara. Cukup mulai dari kebiasaan kecil: kurangi kendaraan pribadi, tanam tanaman penyaring polusi, dan hindari bakar sampah. Bayangkan, tiap langkah kecil hari ini bisa bikin udara lebih layak untuk generasi esok. Temukan fakta mengejutkan, cara-cara sederhana, dan aksi harian yang berdampak besar. Yuk, rawat udara bersama — karena setiap napas layak diperjuangkan.</p>
       </div>
       <div className="relative" data-aos="fade-left" data-aos-duration="900">
-        <Image width={500} height={500} className='lg:w-125 bounce h-auto w-65' src='/image/air/air.png' alt='tree'/>
+        <Image width={500} height={500} className='lg:w-125 bounce h-auto w-65' src='/image/air/air.webp' alt='tree'/>
         <div className="lg:w-80 w-60 h-60 lg:h-80 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full -z-10 bg-[#6BB3F6] blur-3xl opacity-50 shadow-[0_0_120px_#98CD00]"></div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Threat() {
         <div data-aos="fade-up" data-aos-duration="800">
           <ReactCardFlip isFlipped={flip1} flipDirection='horizontal'>
               <div onClick={handleFLip1} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 h-85 rounded-xl flex justify-center items-center">
-                  <Image width={200} height={200} className='' src='/image/air/flip1.png' alt='flip'/>
+                  <Image width={200} height={200} className='' src='/image/air/flip1.webp' alt='flip'/>
               </div>
               <div onClick={handleFLip1} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 p-4 h-85 rounded-xl flex justify-center items-center">
                   <h1 className='font-semibold text-[24px] text-center text-white'>Kendaraan bermotor & industri.</h1>
@@ -36,7 +36,7 @@ export default function Threat() {
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <ReactCardFlip isFlipped={flip2} flipDirection='horizontal'>
               <div onClick={handleFLip2} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 h-85 rounded-xl flex justify-center items-center">
-                  <Image width={240} height={240} className='' src='/image/air/flip2.png' alt='flip'/>
+                  <Image width={240} height={240} className='' src='/image/air/flip2.webp' alt='flip'/>
               </div>
               <div onClick={handleFLip2} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 p-4 h-85 rounded-xl flex justify-center items-center">
                   <h1 className='font-semibold text-[24px] text-center text-white'>Pembakaran sampah terbuka.</h1>
@@ -46,7 +46,7 @@ export default function Threat() {
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <ReactCardFlip isFlipped={flip3} flipDirection='horizontal'>
               <div onClick={handleFLip3} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 h-85 rounded-xl flex justify-center items-center">
-                  <Image width={240} height={240} className='' src='/image/air/flip3.png' alt='flip'/>
+                  <Image width={240} height={240} className='' src='/image/air/flip3.webp' alt='flip'/>
               </div>
               <div onClick={handleFLip3} className="bg-[radial-gradient(circle,#6BB3F6_0%,#7597B8_100%)] lg:w-60 w-75 p-4 h-85 rounded-xl flex justify-center items-center">
                   <h1 className='font-semibold text-[24px] text-center text-white'>Asap rokok & kebakaran hutan.</h1>
