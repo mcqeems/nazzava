@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 type LayerDef = {
-  ref: React.RefObject<SVGSVGElement | null>;
+  ref: RefObject<SVGSVGElement | null>;
   initialOffset: { x: number; y: number };
   maxOffset: number;
   reverse?: boolean;
@@ -178,8 +178,14 @@ function CuteBot() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M29.9988 24.148L5.8512 0L-5.0344e-05 5.85133L24.1476 29.9993L29.9988 24.148Z" fill="#0E75B4" />
-        <path d="M24.1487 0.00046199L0.00109863 24.1484L5.85235 29.9998L30 5.8518L24.1487 0.00046199Z" fill="#0E75B4" />
+        <path
+          d="M29.9988 24.148L5.8512 0L-5.0344e-05 5.85133L24.1476 29.9993L29.9988 24.148Z"
+          fill="#16A34A"
+        />
+        <path
+          d="M24.1487 0.00046199L0.00109863 24.1484L5.85235 29.9998L30 5.8518L24.1487 0.00046199Z"
+          fill="#22C55E"
+        />
       </svg>
       <svg
         id="head"
@@ -197,8 +203,9 @@ function CuteBot() {
         />
         <defs>
           <linearGradient id="head-color" x1="26" y1="0" x2="26" y2="50" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#69D7FF" />
-            <stop offset="1" stop-color="#00B4F5" />
+            <stop stopColor="#86EFAC" />
+            <stop offset="0.55" stopColor="#22C55E" />
+            <stop offset="1" stopColor="#16A34A" />
           </linearGradient>
         </defs>
       </svg>
@@ -218,8 +225,8 @@ function CuteBot() {
         />
         <defs>
           <linearGradient id="face-color" x1="22" y1="0" x2="22" y2="36" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#005284" />
-            <stop offset="1" stop-color="#0076BE" />
+            <stop stopColor="#14532D" />
+            <stop offset="1" stopColor="#15803D" />
           </linearGradient>
         </defs>
       </svg>

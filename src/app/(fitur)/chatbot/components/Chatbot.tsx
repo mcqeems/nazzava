@@ -2,12 +2,12 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { ButtonBack } from '@/components/ui/button-back';
 import { nazzaBotChat, type NazzaBotMessage } from '../actions/actions';
 import MarkdownMessage from './MarkdownMessage';
 import { BotIcon, MicIcon, MicOffIcon, SendHorizonalIcon } from 'lucide-react';
 import Dot from './Dot';
+import CuteBot from './CuteBot';
 
 interface Message {
   role: 'user' | 'bot';
@@ -280,8 +280,12 @@ export default function Chatbot() {
       >
         {showHeader && (
           <div className="flex flex-col justify-center lg:mt-0 mt-12 items-center gap-8 ">
-            <Image src="/image/chatbot/ask.webp" alt="Ask" width={35} height={35} className="lg:w-8.75 w-6.25 h-auto" />
-            <h1 className="font-semibold text-[16px] lg:text-[24px] text-center">Tanyakan apa saja kepada AI kami</h1>
+            <div className="scale-50 md:scale-80 md:mb-10">
+              <CuteBot />
+            </div>
+            <h1 className="font-semibold text-[16px] lg:text-[24px] text-center">
+              Tanyakan apa saja kepada NazzaBot!{' '}
+            </h1>
           </div>
         )}
 
@@ -342,72 +346,76 @@ export default function Chatbot() {
             )}
             <div ref={messagesEndRef} />
           </div>
-
-          {showSuggestions && (
-            <div className="mb-0">
-              <h1 className="text-foreground text-[14px] lg:text-[16px] mb-2 font-medium">
-                Saran tentang apa yang harus ditanyakan kepada AI kami
-              </h1>
-              <div className="flex flex-wrap gap-3 my-4">
-                {['Halo siapa kamu?', 'Bagaimana menjaga lingkungan?', 'Cara mendaur ulang sampah?'].map(
-                  (question, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleAsk(question)}
-                      className="bg-card px-6 py-3 rounded-full text-[10px] lg:text-[12px] shadow-sm"
-                    >
-                      {question}
-                    </button>
-                  )
-                )}
+          <div>
+            {showSuggestions && (
+              <div>
+                <h1 className="text-foreground text-[14px] lg:text-[16px] mb-2 font-medium">
+                  Saran tentang apa yang harus ditanyakan kepada AI kami
+                </h1>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+                  {['Halo siapa kamu?', 'Bagaimana menjaga lingkungan?', 'Cara mendaur ulang sampah?'].map(
+                    (question, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleAsk(question)}
+                        className="w-full bg-card hover:bg-border transition-colors cursor-pointer px-6 py-3 rounded-lg text-center text-[10px] lg:text-[12px] shadow-sm"
+                      >
+                        {question}
+                      </button>
+                    )
+                  )}
+                </div>
               </div>
+            )}
+            <div className="flex items-center w-full bg-card h-20 px-4 lg:px-6 rounded-xl shadow-lg">
+              <input
+                type="text"
+                placeholder="Tanyakan apa pun tentang kondisi lingkungan Kamu sekarang"
+                value={prompt}
+                onFocus={markVoiceInputInteracted}
+                onChange={(e) => {
+                  markVoiceInputInteracted();
+                  setPrompt(e.target.value);
+                  if (e.target.value.trim()) setShowSuggestions(false);
+                }}
+                onKeyDown={handleKeyDown}
+                className="w-full outline-none text-[12px] lg:text-[14px] pr-4"
+              />
+              <button
+                type="button"
+                aria-label={
+                  speechSupported
+                    ? isListening
+                      ? 'Stop voice input'
+                      : 'Start voice input'
+                    : 'Voice input not supported'
+                }
+                aria-pressed={isListening}
+                disabled={!speechSupported}
+                className={`relative cursor-pointer lg:w-7.5 w-6.25 mr-4 transition-all text-foreground hover:text-muted-text disabled:opacity-50 disabled:cursor-not-allowed ${
+                  isListening ? 'text-primary hover:text-primary' : ''
+                }`}
+                onClick={handleShowMic}
+              >
+                {isListening && (
+                  <>
+                    <span className="pointer-events-none absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+                    <span className="pointer-events-none absolute -inset-1.5 rounded-full border border-primary/30 animate-[audioWave_1.2s_ease-out_infinite]" />
+                  </>
+                )}
+                <span className="relative inline-flex items-center justify-center">
+                  {isListening ? <MicOffIcon width={25} height={25} /> : <MicIcon width={25} height={25} />}
+                </span>
+              </button>
+              <button
+                className="cursor-pointer lg:w-7.5 w-6.25  transition-all text-foreground hover:text-muted-text"
+                onClick={handleSubmit}
+              >
+                <span className="relative inline-flex items-center justify-center">
+                  <SendHorizonalIcon width={25} height={25} />
+                </span>
+              </button>
             </div>
-          )}
-
-          <div className="flex items-center w-full bg-card h-20 px-4 lg:px-6 rounded-xl shadow-lg">
-            <input
-              type="text"
-              placeholder="Tanyakan apa pun tentang kondisi lingkungan Kamu sekarang"
-              value={prompt}
-              onFocus={markVoiceInputInteracted}
-              onChange={(e) => {
-                markVoiceInputInteracted();
-                setPrompt(e.target.value);
-                if (e.target.value.trim()) setShowSuggestions(false);
-              }}
-              onKeyDown={handleKeyDown}
-              className="w-full outline-none text-[12px] lg:text-[14px] pr-4"
-            />
-            <button
-              type="button"
-              aria-label={
-                speechSupported ? (isListening ? 'Stop voice input' : 'Start voice input') : 'Voice input not supported'
-              }
-              aria-pressed={isListening}
-              disabled={!speechSupported}
-              className={`relative cursor-pointer lg:w-7.5 w-6.25 mr-4 transition-all text-foreground hover:text-muted-text disabled:opacity-50 disabled:cursor-not-allowed ${
-                isListening ? 'text-primary hover:text-primary' : ''
-              }`}
-              onClick={handleShowMic}
-            >
-              {isListening && (
-                <>
-                  <span className="pointer-events-none absolute inset-0 rounded-full bg-primary/20 animate-ping" />
-                  <span className="pointer-events-none absolute -inset-1.5 rounded-full border border-primary/30 animate-[audioWave_1.2s_ease-out_infinite]" />
-                </>
-              )}
-              <span className="relative inline-flex items-center justify-center">
-                {isListening ? <MicOffIcon width={25} height={25} /> : <MicIcon width={25} height={25} />}
-              </span>
-            </button>
-            <button
-              className="cursor-pointer lg:w-7.5 w-6.25  transition-all text-foreground hover:text-muted-text"
-              onClick={handleSubmit}
-            >
-              <span className="relative inline-flex items-center justify-center">
-                <SendHorizonalIcon width={25} height={25} />
-              </span>
-            </button>
           </div>
         </div>
       </div>
