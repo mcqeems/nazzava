@@ -41,9 +41,16 @@ export default function RootLayout({
             <InitialLoadGate>{children}</InitialLoadGate>
           </ScanProvider>
         </ThemeProvider>
-        <Script src="https://unpkg.com/aos@next/dist/aos.js" strategy="beforeInteractive" />
-        <Script id="init-aos" strategy="afterInteractive">
-          {`AOS.init();`}
+        <Script src="https://unpkg.com/aos@next/dist/aos.js" strategy="lazyOnload" />
+        <Script id="init-aos" strategy="lazyOnload">
+          {`
+            window.addEventListener('load', () => {
+              // AOS mutates DOM classes; delaying avoids React hydration mismatch warnings.
+              if (window.AOS && typeof window.AOS.init === 'function') {
+                window.AOS.init();
+              }
+            });
+          `}
         </Script>
       </body>
     </html>
