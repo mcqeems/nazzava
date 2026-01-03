@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+
 @theme default {
   --font-poppins: 'poppins';
   --font-pixelify: 'Pixelify Sans';
@@ -146,6 +147,108 @@ body {
 
 .pulse {
   animation: pulse-smooth 1.5s ease-in-out infinite;
+}
+
+.earth-startround {
+  animation: startround 1s;
+  animation-iteration-count: 1;
+}
+
+.earth-round1 {
+  animation: round1 5s infinite linear;
+}
+
+.earth-round1-delay {
+  animation: round1 5s infinite linear 0.75s;
+}
+
+.earth-round2 {
+  animation: round2 5s infinite linear;
+}
+
+.earth-round2-delay {
+  animation: round2 5s infinite linear 0.75s;
+}
+
+@keyframes startround {
+  0% {
+    filter: brightness(500%);
+    box-shadow: none;
+  }
+  75% {
+    filter: brightness(500%);
+    box-shadow: none;
+  }
+  100% {
+    filter: brightness(100%);
+    box-shadow: inset 0em 0.5em rgb(255, 255, 255, 0.25), inset 0em -0.5em rgb(0, 0, 0, 0.25);
+  }
+}
+
+@keyframes round1 {
+  0% {
+    left: -2em;
+    opacity: 100%;
+    transform: skewX(0deg) rotate(0deg);
+  }
+  30% {
+    left: -6em;
+    opacity: 100%;
+    transform: skewX(-25deg) rotate(25deg);
+  }
+  31% {
+    left: -6em;
+    opacity: 0%;
+    transform: skewX(-25deg) rotate(25deg);
+  }
+  35% {
+    left: 7em;
+    opacity: 0%;
+    transform: skewX(25deg) rotate(-25deg);
+  }
+  45% {
+    left: 7em;
+    opacity: 100%;
+    transform: skewX(25deg) rotate(-25deg);
+  }
+  100% {
+    left: -2em;
+    opacity: 100%;
+    transform: skewX(0deg) rotate(0deg);
+  }
+}
+
+@keyframes round2 {
+  0% {
+    left: 5em;
+    opacity: 100%;
+    transform: skewX(0deg) rotate(0deg);
+  }
+  75% {
+    left: -7em;
+    opacity: 100%;
+    transform: skewX(-25deg) rotate(25deg);
+  }
+  76% {
+    left: -7em;
+    opacity: 0%;
+    transform: skewX(-25deg) rotate(25deg);
+  }
+  77% {
+    left: 8em;
+    opacity: 0%;
+    transform: skewX(25deg) rotate(-25deg);
+  }
+  80% {
+    left: 8em;
+    opacity: 100%;
+    transform: skewX(25deg) rotate(-25deg);
+  }
+  100% {
+    left: 5em;
+    opacity: 100%;
+    transform: skewX(0deg) rotate(0deg);
+  }
 }
 
 @layer utilities {
@@ -318,9 +421,24 @@ body {
   left: 50%;
   transform: translate(calc(-50% + var(--offset-x, 0px)), calc(-50% + var(--offset-y, 0px)));
   transition: transform 0.1s ease-out;
-  will-change: transform; /* 提示瀏覽器優化，浏览器会提前分配大量资源，反而可能导致性能下降 */
+  will-change: transform;
 }
 #chatbot:hover #hair {
   transform: translate(calc(-50% + var(--offset-x, 0px)), calc(-50% + var(--offset-y, 0px))) rotate(-270deg);
   transition: 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Start 20px above its natural position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End at its natural position */
+  }
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
 }

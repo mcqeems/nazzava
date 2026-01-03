@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { ButtonBack } from '@/components/ui/button-back';
 import { nazzaBotChat, type NazzaBotMessage } from '../actions/actions';
 import MarkdownMessage from './MarkdownMessage';
+import { BotIcon } from 'lucide-react';
+import Dot from './Dot';
 
 interface Message {
   role: 'user' | 'bot';
@@ -203,35 +205,44 @@ export default function Chatbot() {
     <div>
       <ButtonBack />
       <div
-        className="w-full flex-col flex fixed font-poppins justify-between h-screen pt-24"
+        className="w-full flex-col flex fixed font-poppins justify-between h-screen pt-12 md:pt-24"
         data-aos="fade-up"
         data-aos-duration="800"
       >
         {showHeader && (
           <div className="flex flex-col justify-center lg:mt-0 mt-12 items-center gap-8 ">
             <Image src="/image/chatbot/ask.webp" alt="Ask" width={35} height={35} className="lg:w-8.75 w-6.25 h-auto" />
-            <h1 className="font-semibold text-[16px] lg:text-[24px] text-center ">Tanyakan apa saja kepada AI kami</h1>
+            <h1 className="font-semibold text-[16px] lg:text-[24px] text-center">Tanyakan apa saja kepada AI kami</h1>
           </div>
         )}
 
         <div className="flex flex-col mx-auto w-[320px] lg:w-225 justify-between h-[calc(100vh-100px)] pb-14">
           <div
-            className={`flex flex-col overflow-y-auto px-2 lg:px-6 py-4 space-y-4 ${
+            className={`flex flex-col overflow-y-auto lg:px-6 py-4 space-y-4 ${
               messages.length > 0 ? 'h-full' : 'lg:h-[26vh] h-[16vh]'
             }`}
           >
             {messages.map((msg, index) => (
               <div key={index} className="flex flex-col gap-1 lg:gap-2">
                 <div
-                  className={`w-full text-[18px] text-foreground flex ${
+                  className={`w-full text-[12px] md:text-base text-foreground flex ${
                     msg.role === 'user' ? 'justify-end' : 'justify-start'
                   }`}
                 >
-                  <p className="font-medium">{msg.role === 'user' ? 'Me' : 'Greenly Bot'}</p>
+                  <div>
+                    {msg.role === 'user' ? (
+                      ''
+                    ) : (
+                      <div className="bg-primary-light p-3 flex flex-row items-center justify-center gap-2 rounded-lg fade-in-down">
+                        <BotIcon className="md:h-6 h-4 w-auto" />
+                        NazzaBot
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div
-                  className={`p-4 rounded-lg max-w-[95%] lg:max-w-[70%] shadow-md ${
-                    msg.role === 'user' ? 'bg-card text-foreground ml-auto' : 'bg-card text-foreground mr-auto'
+                  className={`p-4 rounded-lg max-w-full shadow-md ${
+                    msg.role === 'user' ? 'bg-card text-foreground ml-auto' : 'text-foreground mr-auto'
                   }`}
                 >
                   <div className="text-[10px] lg:text-[14px] text-left wrap-break-word leading-relaxed">
@@ -243,15 +254,15 @@ export default function Chatbot() {
 
             {loading && (
               <div className="flex justify-start">
-                <div className="animate-pulse bg-white p-4 rounded-lg w-[70%] shadow-md">
-                  <Image src="/image/chatbot/answer.svg" alt="Loading" width={20} height={20} />
+                <div className="bg-card max-h-3 p-4 rounded-lg shadow-md flex items-center justify-center">
+                  <Dot />
                 </div>
               </div>
             )}
 
             {typingContent && (
               <div className="flex justify-start">
-                <div className="bg-card p-4 rounded-lg max-w-[95%] lg:max-w-[70%] shadow-md text-[10px] lg:text-[14px] text-left text-foreground wrap-break-word leading-relaxed">
+                <div className="p-4 rounded-lg max-w-full shadow-md text-[10px] lg:text-[14px] text-left text-foreground wrap-break-word leading-relaxed">
                   <MarkdownMessage content={typingContent} />
                 </div>
               </div>
