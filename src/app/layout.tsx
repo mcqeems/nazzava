@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Poppins, Pixelify_Sans } from 'next/font/google';
 import './globals.css';
 import 'aos/dist/aos.css';
-import { ScanProvider } from './context/scanContext';
 import { ThemeProvider } from './context/themeContext';
 import InitialLoadGate from '@/components/ui/InitialLoadGate';
 import AOSInit from '@/components/AOSInit';
@@ -37,9 +36,7 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} ${pixelify.variable} overflow-x-hidden antialiased`}>
         <ThemeProvider>
-          <ScanProvider>
-            <InitialLoadGate>{children}</InitialLoadGate>
-          </ScanProvider>
+          <InitialLoadGate>{children}</InitialLoadGate>
         </ThemeProvider>
         <AOSInit />
       </body>
