@@ -467,24 +467,24 @@ export default function Page() {
     <div className="fixed font-pixelify">
       <div
         id="joystick-container"
-        className={`fixed analog-game bottom-6 left-6 w-[80px] h-[80px] rounded-full border-2 border-gray-400 bg-white/10 touch-none ${
+        className={`fixed lg:hidden bottom-6 left-6 size-20 rounded-full border-2 border-gray-400 bg-white/10 touch-none ${
           isLoading == false ? "z-20" : "z-0"
         }`}
       >
         <div
           id="joystick-thumb"
-          className="w-[50px] h-[50px] bg-[#FFAA00] rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-100"
+          className="size-12.5 bg-[#FFAA00] rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-100"
         ></div>
       </div>
 
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="playScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] text-[#FFAA00] pulse cursor-pointer"
+          className="font-bold text-5xl lg:text-8xl text-[#FFAA00] pulse cursor-pointer"
           style={{ WebkitTextStroke: "2px black" }}
           id="play"
         >
@@ -508,13 +508,13 @@ export default function Page() {
       </div>
 
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="countdownScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] pulse text-[#FFAA00]"
+          className="font-bold text-5xl lg:text-8xl pulse text-[#FFAA00]"
           style={{ WebkitTextStroke: "2px black" }}
           id="countdown"
         >
@@ -523,13 +523,13 @@ export default function Page() {
       </div>
 
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="gameoverScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] text-[#FFAA00]"
+          className="font-bold text-5xl lg:text-8xl text-[#FFAA00]"
           style={{ WebkitTextStroke: "2px black" }}
           id="gameover"
         >
@@ -537,13 +537,13 @@ export default function Page() {
         </p>
         <div className="flex justify-center items-center mt-4 lg:mt-12 gap-20">
           <button
-            className="text-white border-2 border-white px-8 py-2 rounded-md text-[14px] lg:text-[20px] font-[500] cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
-            id="playAgain" 
+            className="text-white border-2 border-white px-8 py-2 rounded-md text-sm lg:text-xl font-medium cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
+            id="playAgain"
           >
             Mulai Lagi
           </button>
           <button
-            className="text-white border-2 border-white px-8 py-2 rounded-md text-[14px] lg:text-[20px] font-[500] cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
+            className="text-white border-2 border-white px-8 py-2 rounded-md text-sm lg:text-xl font-medium cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
             id="close"
           >
             Keluar
@@ -552,7 +552,7 @@ export default function Page() {
       </div>
 
       <p
-        className="absolute lg:top-12 top-6 left-14 font-[700] text-[24px] lg:text-[40px] text-shadow-2xl text-[#FFAA00]"
+        className="absolute lg:top-12 top-6 left-14 font-bold text-2xl lg:text-4xl text-shadow-2xl text-[#FFAA00]"
         style={{ WebkitTextStroke: "1px black" }}
         id="score"
       >
