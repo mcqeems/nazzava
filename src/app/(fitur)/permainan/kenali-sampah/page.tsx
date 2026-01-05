@@ -193,15 +193,21 @@ export default function Page() {
       ];
 
       document.addEventListener("keydown", (e: any) => {
-        if (e.key.toLowerCase() === "a") keysProp.a = true;
-        if (e.key.toLowerCase() === "s") keysProp.s = true;
-        if (e.key.toLowerCase() === "d") keysProp.d = true;
+        if (e.key.toLowerCase() === "a" || e.key === "ArrowLeft")
+          keysProp.a = true;
+        if (e.key.toLowerCase() === "s" || e.key === "ArrowDown")
+          keysProp.s = true;
+        if (e.key.toLowerCase() === "d" || e.key === "ArrowRight")
+          keysProp.d = true;
       });
 
       document.addEventListener("keyup", (e: any) => {
-        if (e.key.toLowerCase() === "a") keysProp.a = false;
-        if (e.key.toLowerCase() === "s") keysProp.s = false;
-        if (e.key.toLowerCase() === "d") keysProp.d = false;
+        if (e.key.toLowerCase() === "a" || e.key === "ArrowLeft")
+          keysProp.a = false;
+        if (e.key.toLowerCase() === "s" || e.key === "ArrowDown")
+          keysProp.s = false;
+        if (e.key.toLowerCase() === "d" || e.key === "ArrowRight")
+          keysProp.d = false;
       });
 
       function trashUpdateMove() {
@@ -447,13 +453,13 @@ export default function Page() {
   return (
     <div className="fixed font-pixelify">
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="playScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] text-[#FFAA00] pulse cursor-pointer"
+          className="font-bold text-5xl lg:text-8xl text-[#FFAA00] pulse cursor-pointer"
           style={{ WebkitTextStroke: "2px black" }}
           id="play"
         >
@@ -477,13 +483,13 @@ export default function Page() {
       </div>
 
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="countdownScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] pulse text-[#FFAA00]"
+          className="font-bold text-5xl lg:text-8xl pulse text-[#FFAA00]"
           style={{ WebkitTextStroke: "2px black" }}
           id="countdown"
         >
@@ -492,13 +498,13 @@ export default function Page() {
       </div>
 
       <div
-        className={`bg-[#0000007b] w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
+        className={`bg-black/48 w-full h-screen absolute top-0 flex flex-col justify-center items-center ${
           isLoading == false ? "z-20" : "z-0"
         }`}
         id="gameoverScreen"
       >
         <p
-          className="font-[700] text-[50px] lg:text-[80px] text-[#FFAA00]"
+          className="font-bold text-5xl lg:text-8xl text-[#FFAA00]"
           style={{ WebkitTextStroke: "2px black" }}
           id="gameover"
         >
@@ -506,13 +512,13 @@ export default function Page() {
         </p>
         <div className="flex justify-center items-center mt-4 lg:mt-12 gap-20">
           <button
-            className="text-white border-2 border-white px-8 py-2 rounded-md text-[14px] lg:text-[20px] font-[500] cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
+            className="text-white border-2 border-white px-8 py-2 rounded-md text-sm lg:text-xl font-medium cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
             id="playAgain"
           >
             Mulai Lagi
           </button>
           <button
-            className="text-white border-2 border-white px-8 py-2 rounded-md text-[14px] lg:text-[20px] font-[500] cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
+            className="text-white border-2 border-white px-8 py-2 rounded-md text-sm lg:text-xl font-medium cursor-pointer hover:scale-90 hover:opacity-60 duration-200"
             id="close"
           >
             Keluar
@@ -521,32 +527,32 @@ export default function Page() {
       </div>
 
       <div
-        className={`absolute analog-game flex justify-center items-center gap-6 bottom-6 left-6 ${
+        className={`absolute lg:hidden flex justify-center items-center gap-6 bottom-6 left-6 ${
           isLoading == false ? "z-20" : "z-0"
         }`}
       >
         <img
           src={chevronLeft.src}
-          className="w-[42px] bg-[linear-gradient(150deg,_#58C229_30%,_#C7DF67_100%)] p-1.5 rounded-full h-auto"
+          className="size-10.5 bg-linear-to-br from-[#58C229] from-30% to-[#C7DF67] to-100% p-1.5 rounded-full active:scale-90 transition-transform"
           alt=""
           id="chevronLeft"
         />
         <img
           src={chevronDown.src}
-          className="w-[42px] bg-[linear-gradient(150deg,_#58C229_30%,_#C7DF67_100%)] p-1.5 rounded-full h-auto"
+          className="size-10.5 bg-linear-to-br from-[#58C229] from-30% to-[#C7DF67] to-100% p-1.5 rounded-full active:scale-90 transition-transform"
           alt=""
           id="chevronDown"
         />
         <img
           src={chevronRight.src}
-          className="w-[42px] bg-[linear-gradient(150deg,_#58C229_30%,_#C7DF67_100%)] p-1.5 rounded-full h-auto"
+          className="size-10.5 bg-linear-to-br from-[#58C229] from-30% to-[#C7DF67] to-100% p-1.5 rounded-full active:scale-90 transition-transform"
           alt=""
           id="chevronRight"
         />
       </div>
 
       <p
-        className="absolute lg:top-12 top-6 left-14 font-[700] text-[24px] lg:text-[40px] text-shadow-2xl text-[#FFAA00]"
+        className="absolute lg:top-12 top-6 left-14 font-bold text-2xl lg:text-4xl text-shadow-2xl text-[#FFAA00]"
         style={{ WebkitTextStroke: "1px black" }}
         id="score"
       >
@@ -562,25 +568,25 @@ export default function Page() {
       <div className="absolute opacity-0 pointer-events-none">
         <img
           src={life1.src}
-          className="w-[140px] right-12 h-auto absolute top-12"
+          className="w-35 right-12 h-auto absolute top-12"
           alt=""
           id="life1"
         />
         <img
           src={life2.src}
-          className="w-[140px] right-12 h-auto absolute top-12"
+          className="w-35 right-12 h-auto absolute top-12"
           alt=""
           id="life2"
         />
         <img
           src={life3.src}
-          className="w-[140px] right-12 h-auto absolute top-12"
+          className="w-35 right-12 h-auto absolute top-12"
           alt=""
           id="life3"
         />
         <img
           src={life4.src}
-          className="w-[140px] right-12 h-auto absolute top-12"
+          className="w-35 right-12 h-auto absolute top-12"
           alt=""
           id="life4"
         />
