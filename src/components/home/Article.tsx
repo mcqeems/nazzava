@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import popular1 from "../../../public/image/home/article/popular/popular1.webp";
+import popular1 from "../../../public/image/home/article/popular/populer.webp";
 import popular2 from "../../../public/image/home/article/popular/popular2.webp";
 import popular3 from "../../../public/image/home/article/popular/popular3.webp";
 import popular4 from "../../../public/image/home/article/popular/popular4.webp";
@@ -11,8 +11,7 @@ import article3 from "../../../public/image/home/article/article3.webp";
 import article4 from "../../../public/image/home/article/article4.webp";
 import article5 from "../../../public/image/home/article/article5.webp";
 import article6 from "../../../public/image/home/article/article6.webp";
-import prev from "../../../public/image/home/article/prev.webp";
-import next from "../../../public/image/home/article/next.webp";
+
 
 const childrenPopular = [
   {
@@ -124,14 +123,14 @@ export default function Article() {
         <div className="mt-8 flex lg:flex-row flex-col justify-center items-center lg:gap-12 gap-10">
           <a
             target="_blank"
-            href="https://indonesia.go.id/kategori/editorial/8789/butuh-dukungan-kolektif-turunkan-emisi-karbon?lang=1"
+            href="https://www.detik.com/sulsel/berita/d-8293301/18-ton-sampah-menumpuk-di-pasar-wonomulyo-polman-gegara-jalan-ke-tpa-becek"
             className="flex flex-col gap-1 lg:w-150 w-full"
             data-aos="fade-right"
             data-aos-duration="800"
             data-aos-delay="100"
           >
             <Image
-              className="lg:w-150 w-ful mb-4 h-auto"
+              className="lg:w-150 w-full mb-4 h-auto rounded-2xl object-cover"
               src={popular1.src}
               width={600}
               height={600}
@@ -141,11 +140,12 @@ export default function Article() {
               Selasa, 26 November 2025
             </p>
             <h1 className="font-medium lg:text-[28px] text-[20px]">
-              Butuh Dukungan Kolektif Turunkan Emisi Karbon.
+              18 Ton Sampah Menumpuk di Pasar Wonomulyo Polman.
             </h1>
             <p className="font-normal text-justify text-[#7A7A7A] lg:text-[16px] text-[14px]">
-              Indonesia telah berhasil menurunkan emisi karbon bahan bakar fosil
-              menjadi 733,2 juta ton pada 2023.
+              18 Ton Sampah Menumpuk di Pasar Wonomulyo Polman gegara Jalan ke
+              TPA Becek Baca artikel detiksulsel, "18 Ton Sampah Menumpuk di
+              Pasar Wonomulyo Polman gegara Jalan ke TPA Becek"
             </p>
           </a>
           <div className="flex flex-col lg:gap-4 gap-8">
