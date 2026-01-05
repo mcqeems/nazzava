@@ -1,18 +1,15 @@
-"use client";
-import Image from "next/image";
+'use client';
+import Image from 'next/image';
 
 export default function Fact() {
   return (
-    <div
-      className="flex flex-col items-center font-poppins min-h-screen mb-32 -mt-12 lg:px-0 px-6"
-      id="fakta"
-    >
+    <div className="flex flex-col items-center font-poppins min-h-screen -mt-12 lg:px-0 px-6" id="fakta">
       <h1
         className="font-semibold lg:text-[32px] text-[24px] lg:text-start text-center"
         data-aos="fade-up"
         data-aos-duration="800"
       >
-        Air juga memiliki banyak {""}
+        Air juga memiliki banyak {''}
         <span className="relative inline-block">
           fakta unik
           <span className="absolute left-0 bottom-px w-full lg:h-5 h-3.5 -z-10 bg-[#6EC7F0] rounded-full"></span>
@@ -22,17 +19,14 @@ export default function Fact() {
         <div className="flex flex-col mt-16 justify-center items-center lg:gap-28 gap-46 lg:mr-0 mr-12">
           <div data-aos="fade-up" data-aos-duration="800">
             <div
-              className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
+              className="bg-cover relative hover:-translate-y-4 duration-500 object-center w-[320px] lg:w-145 lg:h-50 h-25 flex justify-center items-center"
               style={{ backgroundImage: `url('/image/water/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[18px] text-[12px]">
-                  Tubuh manusia mengandung air sekitar 60 - 70 % dari berat
-                  tubuhnya
+                  Tubuh manusia mengandung air sekitar 60 - 70 % dari berat tubuhnya
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
-                  Source : kms.kemkes.go.id
-                </p>
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">Source : kms.kemkes.go.id</p>
               </div>
               <Image
                 width={200}
@@ -45,16 +39,14 @@ export default function Fact() {
           </div>
           <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div
-              className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 flex justify-center items-center gap-6"
+              className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-50 h-25 flex justify-center items-center gap-6"
               style={{ backgroundImage: `url('/image/water/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
                 <h1 className="font-medium lg:text-[20px] text-[12px]">
                   Penyerapan karbon lebih optimal 57% di hutan campuran
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
-                  Source : naturebasedsolution
-                </p>
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">Source : naturebasedsolution</p>
               </div>
               <Image
                 width={220}
@@ -66,14 +58,9 @@ export default function Fact() {
             </div>
           </div>
         </div>
-        <div
-          className="lg:ml-0 ml-12"
-          data-aos="fade-up"
-          data-aos-duration="800"
-          data-aos-delay="200"
-        >
+        <div className="lg:ml-0 ml-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div
-            className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 lg:mt-0 -mt-76 flex justify-center items-center gap-6"
+            className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-50 h-25 lg:mt-0 -mt-76 flex justify-center items-center gap-6"
             style={{
               backgroundImage: `url('/image/water/comment-reverse.webp')`,
             }}
@@ -81,7 +68,7 @@ export default function Fact() {
             <Image
               width={200}
               height={200}
-              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10px"
+              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10"
               src="/image/water/fact2.webp"
               alt="fact"
             />
@@ -89,9 +76,7 @@ export default function Fact() {
               <h1 className="font-medium lg:text-[18px] text-[12px]">
                 satu pohon rata-rata mampu menyerap ± 22 kg CO₂ per tahun
               </h1>
-              <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
-                Source : Liputan6.com
-              </p>
+              <p className="font-normal mt-2 lg:text-[16px] text-[10px]">Source : Liputan6.com</p>
             </div>
           </div>
         </div>
