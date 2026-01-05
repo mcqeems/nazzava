@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Fact() {
   return (
     <div
-      className="flex flex-col items-center font-poppins min-h-screen mb-32 -mt-12 lg:px-0 px-6"
+      className="flex flex-col items-center font-poppins mb-60 lg:mb-50 -mt-12 lg:px-0 px-6"
       id="fakta"
     >
       <h1
@@ -26,10 +26,10 @@ export default function Fact() {
               style={{ backgroundImage: `url('/image/air/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
-                <h1 className="font-medium lg:text-[18px] text-[12px]">
+                <h1 className="font-medium lg:text-[18px] text-[12px] text-foreground">
                   Indonesia Termasuk Negara dengan Kualitas Udara Terburuk
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                   Source : greenlab.co.id
                 </p>
               </div>
@@ -48,10 +48,10 @@ export default function Fact() {
               style={{ backgroundImage: `url('/image/air/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
-                <h1 className="font-medium lg:text-[20px] text-[12px]">
+                <h1 className="font-medium lg:text-[20px] text-[12px] text-foreground">
                   Polusi Udara Menyebabkan 123.000 Kematian Prematur per Tahun
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                   Source : greenlab.co.id
                 </p>
               </div>
@@ -73,20 +73,22 @@ export default function Fact() {
         >
           <div
             className="bg-cover relative hover:-translate-y-4 duration-500 object-cover w-[320px] lg:w-145 lg:h-45 h-25 lg:mt-0 -mt-76 flex justify-center items-center gap-6"
-            style={{ backgroundImage: `url('/image/air/comment-reverse.webp')` }}
+            style={{
+              backgroundImage: `url('/image/air/comment-reverse.webp')`,
+            }}
           >
             <Image
               width={200}
               height={200}
-              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10px"
+              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10"
               src="/image/air/fact2.webp"
               alt="fact"
             />
             <div className="lg:w-70 w-55 ml-12">
-              <h1 className="font-medium lg:text-[18px] text-[12px]">
+              <h1 className="font-medium lg:text-[18px] text-[12px] text-foreground">
                 Partikel PM2.5 Menjadi Ancaman Utama
               </h1>
-              <p className="font-normal mt-2 lg:text-[16px] text-[10px]">
+              <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                 Source : greenlab.co.id
               </p>
             </div>

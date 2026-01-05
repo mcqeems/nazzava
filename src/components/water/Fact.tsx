@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Fact() {
   return (
-    <div className="flex flex-col items-center font-poppins min-h-screen -mt-12 lg:px-0 px-6" id="fakta">
+    <div className="flex flex-col items-center font-poppins mb-60 lg:mb-50 -mt-12 lg:px-0 px-6" id="fakta">
       <h1
         className="font-semibold lg:text-[32px] text-[24px] lg:text-start text-center"
         data-aos="fade-up"

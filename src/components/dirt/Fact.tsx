@@ -1,10 +1,10 @@
-'use client'
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
 
 export default function Fact() {
   return (
     <div
-      className="flex flex-col items-center font-poppins min-h-screen mb-32 -mt-12 lg:px-0 px-6"
+      className="flex flex-col items-center font-poppins mb-60 lg:mb-50 -mt-12 lg:px-0 px-6"
       id="fakta"
     >
       <h1
@@ -26,11 +26,11 @@ export default function Fact() {
               style={{ backgroundImage: `url('/image/dirt/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
-                <h1 className="font-medium lg:text-[18px] text-[12px] text-white">
+                <h1 className="font-medium lg:text-[18px] text-[12px] text-foreground">
                   Lebih dari 95% makanan yang kita konsumsi berasal dari tanah
                   yang sehat dan subur
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-white">
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                   Source : greeners.co
                 </p>
               </div>
@@ -49,10 +49,10 @@ export default function Fact() {
               style={{ backgroundImage: `url('/image/dirt/comment.webp')` }}
             >
               <div className="lg:w-75 w-55 lg:mr-12 mr-2">
-                <h1 className="font-medium lg:text-[20px] text-[12px] text-white">
+                <h1 className="font-medium lg:text-[20px] text-[12px] text-foreground">
                   40% Tanah di Dunia Sudah Terdegradasi
                 </h1>
-                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-white">
+                <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                   Source : forestdigest.com
                 </p>
               </div>
@@ -81,15 +81,15 @@ export default function Fact() {
             <Image
               width={200}
               height={200}
-              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10px"
+              className="absolute lg:w-45 w-25 bottom-2 lg:-left-10 -left-10"
               src="/image/dirt/fact2.webp"
               alt="fact"
             />
             <div className="lg:w-70 w-55 ml-12">
-              <h1 className="font-medium lg:text-[18px] text-[12px] text-white">
+              <h1 className="font-medium lg:text-[18px] text-[12px] text-foreground">
                 24 Miliar Ton Tanah Subur Hilang Setiap Tahun
               </h1>
-              <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-white">
+              <p className="font-normal mt-2 lg:text-[16px] text-[10px] text-foreground">
                 Source : satuplatform.com
               </p>
             </div>
