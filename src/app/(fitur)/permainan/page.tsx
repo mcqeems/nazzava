@@ -22,7 +22,7 @@ export default function Page() {
         </a>
       </div>
       <div className="flex flex-col justify-center items-center font-poppins min-h-screen pb-20 pt-10 container mx-auto">
-        <div className="w-full bg-gradient-to-br from-[#0F8A3B] via-[#8AD362] to-[#E5F4D2] rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)]">
+        <div className="w-full bg-linear-to-br from-[#0F8A3B] via-[#8AD362] to-[#E5F4D2] rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)]">
           <div className="w-full h-full bg-[#0C1F11]/50 backdrop-blur-xl rounded-2xl overflow-hidden">
             <div className="relative w-full h-40 overflow-hidden lg:hidden">
               <div className="absolute top-4 left-4">
