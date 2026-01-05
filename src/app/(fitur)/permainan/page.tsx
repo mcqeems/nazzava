@@ -1,12 +1,13 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import smartBin from '../../../../public/image/game/smart-bin.webp';
-import monsterJunk from '../../../../public/image/game/monster-junk.webp';
-import { ButtonBack } from '@/components/ui/button-back';
-import { ArrowLeft } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import smartBin from "../../../../public/image/game/smart-bin.webp";
+import monsterJunk from "../../../../public/image/game/monster-junk.webp";
+import { ButtonBack } from "@/components/ui/button-back";
+import { ArrowLeft } from "lucide-react";
 export const metadata = {
-  title: 'Permainan - Nazzava',
-  description: 'Nikmati berbagai permainan edukatif yang seru dan interaktif di Nazzava.',
+  title: "Permainan - Nazzava",
+  description:
+    "Nikmati berbagai permainan edukatif yang seru dan interaktif di Nazzava.",
 };
 
 export default function Page() {
@@ -25,21 +26,37 @@ export default function Page() {
         <div className="w-full bg-linear-to-br from-[#0F8A3B] via-[#8AD362] to-[#E5F4D2] rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)]">
           <div className="w-full h-full bg-[#0C1F11]/50 backdrop-blur-xl rounded-2xl overflow-hidden">
             <div className="relative w-full h-40 overflow-hidden lg:hidden">
-              <div className="absolute top-4 left-4">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.1),transparent_30%)]" />
+              <div className="absolute top-4 left-4 z-10">
                 <a
                   href="/"
-                  className="fixed top-10 left-6 z-40 flex items-center justify-center w-16 h-16 rounded-full bg-card shadow-[0_0_15px_rgba(0,0,0,0.15)] backdrop-blur-xl hover:bg-primary/10 hover:scale-110 transition-all duration-200"
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-card/90 shadow-[0_0_12px_rgba(0,0,0,0.15)] backdrop-blur-xl hover:bg-primary/10 hover:scale-110 transition-all duration-200"
                   aria-label="Go back"
                 >
-                  <ArrowLeft className="w-8 h-8 text-foreground" />
+                  <ArrowLeft className="w-7 h-7 text-foreground" />
                 </a>
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center pointer-events-none">
+                <p className="uppercase tracking-[0.35em] text-[10px] font-semibold">
+                  Permainan
+                </p>
+                <h1 className="text-[22px] font-bold leading-tight drop-shadow">
+                  Mainkan & Pelajari
+                </h1>
+                <p className="text-xs text-white/80 mt-1">
+                  Nikmati berbagai permainan edukatif yang seru dan interaktif.
+                </p>
               </div>
             </div>
             <div className="relative w-full h-40 overflow-hidden hidden lg:block">
-              <div className="absolute inset-0 bg-[radial-linear(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_35%),radial-linear(circle_at_80%_30%,rgba(255,255,255,0.12),transparent_30%)]"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.12),transparent_30%)]" />
               <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-6 text-center">
-                <p className="uppercase tracking-[0.35em] text-xs lg:text-sm font-semibold">Permainan</p>
-                <h1 className="lg:text-[34px] text-[24px] font-bold leading-tight drop-shadow">Mainkan & Pelajari</h1>
+                <p className="uppercase tracking-[0.35em] text-xs lg:text-sm font-semibold">
+                  Permainan
+                </p>
+                <h1 className="lg:text-[34px] text-[24px] font-bold leading-tight drop-shadow">
+                  Mainkan & Pelajari
+                </h1>
                 <p className="text-sm lg:text-base text-white/80 max-w-2xl mt-2">
                   Nikmati berbagai permainan edukatif yang seru dan interaktif.
                 </p>
@@ -63,9 +80,12 @@ export default function Page() {
                         <p className="uppercase tracking-[0.25em] text-xs lg:text-sm font-semibold text-white/80">
                           Game 1
                         </p>
-                        <h2 className="text-2xl lg:text-3xl font-bold text-white mt-2">Smart Bin</h2>
+                        <h2 className="text-2xl lg:text-3xl font-bold text-white mt-2">
+                          Smart Bin
+                        </h2>
                         <p className="text-sm text-white/80 mt-2">
-                          Pelajari cara mengelola sampah dengan benar dan cerdas.
+                          Pelajari cara mengelola sampah dengan benar dan
+                          cerdas.
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
@@ -94,9 +114,12 @@ export default function Page() {
                         <p className="uppercase tracking-[0.25em] text-xs lg:text-sm font-semibold text-white/80">
                           Game 2
                         </p>
-                        <h2 className="text-2xl lg:text-3xl font-bold text-white mt-2">Monster Junk</h2>
+                        <h2 className="text-2xl lg:text-3xl font-bold text-white mt-2">
+                          Monster Junk
+                        </h2>
                         <p className="text-sm text-white/80 mt-2">
-                          Tantang dirimu mengatasi dan memilah sampah dengan cepat.
+                          Tantang dirimu mengatasi dan memilah sampah dengan
+                          cepat.
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
@@ -120,7 +143,9 @@ export default function Page() {
                   <li>Pahami kategori sampah sebelum memulai setiap game.</li>
                   <li>Coba ulangi level yang sulit untuk meningkatkan skor.</li>
                   <li>Pantau waktu dan akurasi untuk hasil terbaik.</li>
-                  <li>Bagikan skor tinggimu dengan teman untuk tantangan seru.</li>
+                  <li>
+                    Bagikan skor tinggimu dengan teman untuk tantangan seru.
+                  </li>
                 </ul>
               </div>
             </div>

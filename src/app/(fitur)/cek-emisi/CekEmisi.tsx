@@ -186,12 +186,25 @@ export default function CekEmisi() {
       <div className="hidden lg:block">
         <ButtonBack />
       </div>
-      <div className="flex flex-col justify-center items-center font-poppins min-h-screen lg:pb-20 lg:pt-10 container mx-auto">
-        <div className="w-full bg-linear-to-br from-primary via-accent to-primary-light rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)] dark:shadow-[0_20px_80px_rgba(74,222,128,0.15)]">
+      <div className="flex flex-col justify-center items-center font-poppins min-h-screen  lg:pb-20 lg:pt-10 container mx-auto">
+        <div className="w-full bg-linear-to-br from-primary via-accent to-primary-light lg:rounded-2xl p-px shadow-[0_20px_80px_rgba(7,53,11,0.18)] dark:shadow-[0_20px_80px_rgba(74,222,128,0.15)]">
           <div className="w-full h-full bg-card/50 backdrop-blur-xl lg:rounded-2xl overflow-hidden">
             <div className="relative w-full h-40 overflow-hidden lg:hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.1),transparent_30%)]" />
               <div className="absolute top-4 left-4">
                 <ButtonBack />
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-foreground px-6 text-center">
+                <p className="uppercase tracking-[0.35em] text-[10px] font-semibold">
+                  Cek Emisi
+                </p>
+                <h1 className="text-[22px] font-bold leading-tight drop-shadow">
+                  Hitung Emisi Karbon Kamu
+                </h1>
+                <p className="text-xs text-muted-text mt-1">
+                  UI ringan dengan panduan singkat supaya kamu bisa cek jejak
+                  karbon harian.
+                </p>
               </div>
             </div>
             <div className="relative w-full h-40 overflow-hidden hidden lg:block">
