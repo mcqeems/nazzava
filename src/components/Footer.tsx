@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../../public/logo/nazzava-logo.webp";
-import { Mail } from "lucide-react";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../../public/logo/nazzava-logo.webp';
+import { Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -13,23 +13,14 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3">
-              <Image
-                src={logo.src}
-                width={40}
-                height={40}
-                alt="Nazzava Logo"
-                className=""
-              />
+              <Image src={logo.src} width={40} height={40} alt="Nazzava Logo" className="" />
               <div>
                 <h3 className="font-bold text-xl text-foreground">Nazzava</h3>
-                <p className="text-xs text-muted-text">
-                  Platform Edukasi Lingkungan
-                </p>
+                <p className="text-xs text-muted-text">Platform Edukasi Lingkungan</p>
               </div>
             </Link>
             <p className="text-sm text-muted-text leading-relaxed">
-              Membersihkan bumi melalui edukasi dan aksi nyata untuk lingkungan
-              yang berkelanjutan.
+              Membersihkan bumi melalui edukasi dan aksi nyata untuk lingkungan yang berkelanjutan.
             </p>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-primary" />
@@ -44,9 +35,7 @@ export default function Footer() {
 
           {/* Navigasi */}
           <div>
-            <h4 className="font-semibold text-base text-foreground mb-4">
-              Navigasi
-            </h4>
+            <h4 className="font-semibold text-base text-foreground mb-4">Navigasi</h4>
             <ul className="flex flex-col gap-2.5">
               <li>
                 <Link
@@ -58,7 +47,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/tentang"
+                  href="/tentang-kami"
                   className="text-sm text-muted-text hover:text-primary hover:pl-2 transition-all duration-200"
                 >
                   Tentang Kami
@@ -77,9 +66,7 @@ export default function Footer() {
 
           {/* Fitur Fitur */}
           <div>
-            <h4 className="font-semibold text-base text-foreground mb-4">
-              Fitur Fitur
-            </h4>
+            <h4 className="font-semibold text-base text-foreground mb-4">Fitur Fitur</h4>
             <ul className="flex flex-col gap-2.5">
               <li>
                 <Link
@@ -118,9 +105,7 @@ export default function Footer() {
 
           {/* Elemen */}
           <div>
-            <h4 className="font-semibold text-base text-foreground mb-4">
-              Elemen
-            </h4>
+            <h4 className="font-semibold text-base text-foreground mb-4">Elemen</h4>
             <ul className="flex flex-col gap-2.5">
               <li>
                 <Link
@@ -161,13 +146,10 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-text text-center md:text-left">
-            © 2025{" "}
-            <span className="font-semibold text-foreground">Nazzava</span> —
-            Semua hak dilindungi.
+            © 2025 <span className="font-semibold text-foreground">Nazzava</span> — Semua hak dilindungi.
           </p>
           <p className="text-sm text-muted-text text-center md:text-right">
-            Dibangun dengan <span className="text-red-500">❤️</span> untuk
-            kelestarian lingkungan
+            Dibangun dengan <span className="text-red-500">❤️</span> untuk kelestarian lingkungan
           </p>
         </div>
       </div>
