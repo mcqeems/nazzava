@@ -25,7 +25,7 @@ Aturan bahasa & format:
 - Objek JSON WAJIB memiliki properti berikut:
 	- "name": nama benda sampah yang paling mungkin (string)
 	- "type": salah satu dari: "organik", "anorganik", "b3", "residu", "tidak_diketahui" (string)
-	- "description": ringkasan + umpan balik + rekomendasi langkah nyata (string)
+	- "description": penjelasan yang informatif dan mudah dibaca. Gunakan paragraf terpisah (dengan \\n\\n) untuk memisahkan identifikasi, dampak/fakta, dan saran penanganan agar tidak menumpuk. (string)
 	- "confidence": angka 0.0–1.0 yang menggambarkan keyakinan (number)
 	- "recommendation": rekomendasi tindakan yang paling disarankan (string)
 	- "warnings": daftar peringatan/kehati-hatian (array of string; boleh kosong)
