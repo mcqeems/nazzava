@@ -17,7 +17,7 @@ const CategoryData = [
     id: 1,
     image: tree,
     title: "Pohon",
-    desc: "Pohon adalah tumbuhan yang batangnya berkayu dan bercabang. Batang pohon utama berdiri dan berukuran lebih besari dibanding cabang-cabangnya.",
+    desc: "Pohon adalah tumbuhan yang batangnya berkayu dan bercabang. Batang pohon berfungsi sebagai penopang utama bagi ranting dll.",
     link: "/pohon",
     width: 170,
   },
@@ -50,20 +50,24 @@ const CategoryData = [
 const CategoryCard = ({ item }: { item: (typeof CategoryData)[0] }) => (
   <Link
     href={item.link}
-    className="block bg-[linear-gradient(150deg,#58C229_30%,#C7DF67_100%)] lg:w-90 w-full min-h-115 rounded-lg px-6 py-10 text-center shadow-md mx-auto hover:shadow-lg transition-shadow"
+    className="flex flex-col h-full bg-[linear-gradient(150deg,#58C229_30%,#C7DF67_100%)] w-full rounded-lg px-4 py-8 md:px-6 md:py-10 text-center shadow-md hover:shadow-lg transition-shadow"
   >
-    <Image
-      src={item.image}
-      alt="image"
-      width={item.width}
-      height={160}
-      className="mb-4 mx-auto"
-    />
-    <h1 className="text-white text-[28px] font-semibold">{item.title}</h1>
-    <p className="text-white text-sm mt-2 text-[12px] text-justify">
-      {item.desc}
-    </p>
-    <span className="block w-full h-10 mt-8 rounded-md text-[#AEA46B] bg-white leading-10 font-semibold">
+    <div className="flex-1 flex flex-col">
+      <Image
+        src={item.image}
+        alt="image"
+        width={item.width}
+        height={160}
+        className="mb-4 mx-auto"
+      />
+      <h1 className="text-white text-[28px] font-semibold mb-3">
+        {item.title}
+      </h1>
+      <p className="text-white text-sm text-[12px] text-justify flex-grow line-clamp-3">
+        {item.desc}
+      </p>
+    </div>
+    <span className="block w-full h-10 mt-6 rounded-md text-[#AEA46B] bg-white leading-10 font-semibold">
       Pilih
     </span>
   </Link>
@@ -74,7 +78,7 @@ export default function Category() {
 
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
@@ -119,9 +123,6 @@ export default function Category() {
               slidesPerView: 1.5,
               centeredSlides: true,
             },
-            768: {
-              slidesPerView: 2,
-            },
           }}
         >
           {CategoryData.map((item) => (
@@ -132,9 +133,9 @@ export default function Category() {
         </Swiper>
       )}
 
-      {/* Desktop View - Grid */}
+      {/* Tablet & Desktop View - Responsive Grid */}
       {!isMobile && (
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 auto-rows-fr">
           {CategoryData.map((item) => (
             <div key={item.id}>
               <CategoryCard item={item} />
