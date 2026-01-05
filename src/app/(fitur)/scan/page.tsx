@@ -1,7 +1,6 @@
 import React from 'react';
+import TrashScanner from './components/TrashScanner';
 
-function page() {
-  return <div>Currently in development!</div>;
+export default function Page() {
+  return <TrashScanner />;
 }
-
-export default page;
