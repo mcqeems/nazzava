@@ -102,7 +102,7 @@ export default function HistoryDialog({ selected, onClose }: HistoryDialogProps)
 
               <div>
                 <div className="text-sm font-semibold text-foreground mb-4">Hasil Analisis</div>
-                <div className="max-h-[520px] overflow-auto rounded-2xl border border-border bg-card p-4">
+                <div className="max-h-[520px] overflow-auto scrollbar-custom rounded-2xl border border-border bg-card p-4">
                   <ResultCard result={displayItem.result} />
                 </div>
               </div>

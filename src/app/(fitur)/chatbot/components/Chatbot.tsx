@@ -388,12 +388,12 @@ export default function Chatbot() {
     <div>
       <ButtonBack />
       <div
-        className="w-full flex-col flex fixed font-poppins justify-between h-screen pt-12 md:pt-24"
+        className="fixed inset-0 z-40 flex flex-col font-poppins pt-12 md:pt-24"
         data-aos="fade-up"
         data-aos-duration="800"
       >
         {showHeader && (
-          <div className="flex flex-col justify-center lg:mt-0 mt-12 items-center gap-8 ">
+          <div className="flex flex-col justify-center lg:mt-0 mt-12 items-center gap-8 shrink-0">
             <div className="scale-50 md:scale-80 md:mb-10">
               <CuteBot />
             </div>
@@ -403,10 +403,10 @@ export default function Chatbot() {
           </div>
         )}
 
-        <div className="flex flex-col mx-auto w-[320px] lg:w-225 justify-between h-[calc(100vh-75px)] pb-14">
+        <div className="flex flex-col mx-auto w-[320px] lg:w-225 flex-1 min-h-0 pb-14">
           <div
-            className={`flex flex-col overflow-y-auto lg:px-6 py-4 space-y-4 ${
-              messages.length > 0 ? 'h-full' : 'lg:h-[26vh] h-[16vh]'
+            className={`flex flex-col scrollbar-custom lg:px-6 py-4 space-y-4 ${
+              messages.length > 0 ? 'flex-1 min-h-0' : 'lg:h-[26vh] h-[16vh] shrink-0'
             }`}
           >
             {messages.map((msg, index) => (
@@ -460,7 +460,7 @@ export default function Chatbot() {
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div>
+          <div className="mt-auto">
             {showSuggestions && (
               <div>
                 <h1 className="text-foreground text-[14px] lg:text-[16px] mb-2 font-medium">

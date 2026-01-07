@@ -188,8 +188,10 @@ export default function TrashScanner() {
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2 text-sm">
                   <span className="px-4 py-2 bg-card/70 rounded-full border border-border">Trash Analyzer</span>
-                  <span className="px-4 py-2 bg-card/70 rounded-full border border-border">Gemini Vision</span>
-                  <span className="px-4 py-2 bg-card/70 rounded-full border border-border">Tersimpan di Lokal</span>
+                  <span className="px-4 py-2 bg-card/70 rounded-full border border-border">Machine Learning</span>
+                  <span className="px-4 py-2 bg-card/70 rounded-full border border-border">
+                    Artificial Intelligence
+                  </span>
                 </div>
               </div>
             </div>
